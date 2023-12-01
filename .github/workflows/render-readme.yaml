@@ -62,7 +62,7 @@ jobs:
       # below is yoinked from https://gist.github.com/swinton/03e84635b45c78353b1f71e41007fc7c
       - name: Commit Changes
         env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          GITHUB_TOKEN: "${{ steps.oauth-token.outputs.token }}"
           FILE_TO_COMMIT: "data.csv"
           DESTINATION_BRANCH: "main"
         run: |
