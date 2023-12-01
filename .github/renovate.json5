@@ -1,0 +1,35 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "docker:enableMajor",
+    ":disableRateLimiting",
+    ":dependencyDashboard",
+    ":semanticCommits",
+    ":automergeDigest",
+    ":automergeBranch",
+    "helpers:pinGitHubActionDigests"
+  ],
+  "platform": "github",
+  "platformCommit": true,
+  "onboarding": false,
+  "requireConfig": "optional",
+  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
+  "suppressNotifications": ["prIgnoreNotification"],
+  "packageRules": [
+    {
+      "description": "Auto-merge Github Actions",
+      "matchDatasources": ["github-tags"],
+      "automerge": true,
+      "automergeType": "branch",
+      "ignoreTests": true,
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackagePatterns": ["renovatebot/github-action"]
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["digest"],
+      "commitMessagePrefix": "📣 "
+    }
+  ]
+}
