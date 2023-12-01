@@ -4,10 +4,16 @@ name: "Render Readme"
 on:
   workflow_call:
     secrets:
-      BOT_APP_ID:
-        description: The ID of the GitHub App
+      BOT_USERNAME:
+        description: The username of the GitHub App
         required: true
-      BOT_APP_PRIVATE_KEY:
+      BOT_API_ID:
+        description: The hidden API ID of the GitHub App
+        required: true
+      BOT_APP_ID:
+        description: The App ID of the GitHub App (found in app settings)
+        required: true
+      BOT_JWT_PRIVATE_KEY:
         description: The private key of the GitHub App
         required: true
 
@@ -16,17 +22,17 @@ jobs:
     name: Render README
     runs-on: ubuntu-latest
     steps:
-      - name: Generate Token
+      - name: "Generate Short Lived OAuth App Token (ghs_*)"
         uses: actions/create-github-app-token@e995b4e40ace2eb5bf13137d9abe242c98f3aab6 # v1.6.0
-        id: app-token
+        id: oauth-token
         with:
-          app-id: "${{ secrets.BOT_APP_ID }}"
-          private-key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
+          app-id: "${{ secrets.BOT_APP_ID }}" # $BOT_APP_ID is found in GitHub App main settings page
+          private-key: "${{ secrets.BOT_JWT_PRIVATE_KEY }}" # $BOT_JWT_PRIVATE_KEY is generated in GitHub App main settings page, uses the X.509 private key format
 
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
-          token: "${{ steps.app-token.outputs.token }}"
+          token: "${{ steps.oauth-token.outputs.token }}"
 
       - name: Setup Python
         uses: actions/setup-python@65d7f2d534ac1bc67fcd62888c5f4f3d2cb2b236 # v4.7.1
@@ -40,15 +46,15 @@ jobs:
 
       - name: Render README
         env:
-          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+          GITHUB_TOKEN: "${{ steps.oauth-token.outputs.token }}"
         shell: bash
         run: python ./.github/scripts/render-readme.py
 
       - name: Commit Changes
         shell: bash
         run: |
-          git config --global user.name "bot-ross"
-          git config --global user.email "98030736+bot-ross[bot]@users.noreply.github.com"
+          git config --global user.name "${{ secrets.BOT_UESRNAME }}"
+          git config --global user.email "${{ secrets.BOT_API_ID }}+${{ secrets.BOT_USERNAME }}[bot]@users.noreply.github.com"
           git add ./README.md
-          git commit -m "Render README.md" || echo "No changes to commit"
+          git commit -m "chore: render README.md" || echo "No changes to commit"
           git push origin || echo "No changes to push"
