@@ -63,7 +63,7 @@ jobs:
       - name: Commit Changes
         env:
           GITHUB_TOKEN: "${{ steps.oauth-token.outputs.token }}"
-          FILE_TO_COMMIT: "data.csv"
+          FILE_TO_COMMIT: "README.md"
           DESTINATION_BRANCH: "main"
         run: |
           export TODAY=$( date -u '+%Y-%m-%d' )
