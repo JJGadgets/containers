@@ -19,6 +19,12 @@ _A heavily opinionated collection of container images_
 
 </div>
 
+<div align="center>
+
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/JJGadgets/containers/badge)](https://securityscorecards.dev/viewer/?uri=github.com/JJGadgets/containers)
+
+</div>
+
 Welcome to @JJGadgets' container images, if looking for a container start by [browsing the Packages tab in GitHub for this repo](https://github.com/JJGadgets?tab=packages&repo_name=containers).
 
 ## Mission statement
