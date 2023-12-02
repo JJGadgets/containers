@@ -40,8 +40,7 @@ jobs:
     outputs:
       matrices: ${{ steps.prepare-matrices.outputs.matrices }}
     steps:
-      - &lowercaseRepoOwner
-        name: Lowercase repository owner
+      - name: Lowercase repository owner
         shell: bash
         run: |
           echo "LOWERCASE_REPO_OWNER=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
@@ -96,7 +95,11 @@ jobs:
       matrix:
         image: ["${{ fromJSON(needs.prepare.outputs.matrices).imagePlatforms }}"]
     steps:
-      - *lowercaseRepoOwner
+      - name: Lowercase repository owner
+        shell: bash
+        run: |
+          echo "LOWERCASE_REPO_OWNER=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
+
       - name: Log Matrix Input
         shell: bash
         run: |
@@ -249,7 +252,11 @@ jobs:
         image: ["${{ fromJSON(needs.prepare.outputs.matrices).images }}"]
       fail-fast: false
     steps:
-      - *lowercaseRepoOwner
+      - name: Lowercase repository owner
+        shell: bash
+        run: |
+          echo "LOWERCASE_REPO_OWNER=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
+
       - name: Download Digests
         uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3.0.2
         with:
@@ -337,7 +344,11 @@ jobs:
     needs: ["prepare", "merge"]
     if: ${{ always() }}
     steps:
-      - *lowercaseRepoOwner
+      - name: Lowercase repository owner
+        shell: bash
+        run: |
+          echo "LOWERCASE_REPO_OWNER=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
+
       - name: Check build matrix status
         if: ${{ (inputs.appsToBuild != '' && inputs.appsToBuild != '[]') && (needs.merge.result != 'success' && needs.merge.result != 'skipped' && needs.prepare.result != 'success') }}
         shell: bash
