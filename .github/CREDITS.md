@@ -9,5 +9,5 @@ While it would be possible to rewrite a simplified version of this, I decided it
 This makes it easier to focus on actually building containers instead of worrying about the pipeline code to build and maintain said containers all by myself.
 
 As of 2023-12-01, the CODEOWNERS file in this folder (.github) will contain @onedr0p, @bjw-s and myself, to effectively reflect all the people who have contributed to the pipeline code found in this repo.
-Only if a technical reason arises where the CODEOWNERS file shouldn't contain these amazing people, will it be changed to only reflect myself, and this README will be the main source of attribution from me.
+Only if a technical reason arises where the CODEOWNERS file shouldn't contain these amazing people, will it be changed to only reflect myself, and this CREDITS.md will be the main source of attribution from me.
 
