@@ -101,4 +101,4 @@ Containers here can be **deprecated** at any point, this could be for any reason
 
 ## Credits
 
-This repo's main pipeline code (found in `.github`) was taken from [onedr0p's containers repo](https://github.com/onedr0p/containers). Full attributions can be found in the `.github/README.md`.
+This repo's main pipeline code (found in `.github`) was taken from [onedr0p's containers repo](https://github.com/onedr0p/containers). Full attributions can be found in the `.github/CREDITS.md`.
