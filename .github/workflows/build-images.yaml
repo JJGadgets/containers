@@ -27,9 +27,9 @@ on:
         description: Force rebuild
     secrets:
       BOT_APP_ID:
-        description: The ID of the GitHub App
+        description: The App ID of the GitHub App (found in app settings)
         required: true
-      BOT_APP_PRIVATE_KEY:
+      BOT_JWT_PRIVATE_KEY:
         description: The private key of the GitHub App
         required: true
 
