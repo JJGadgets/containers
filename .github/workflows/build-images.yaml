@@ -40,17 +40,17 @@ jobs:
     outputs:
       matrices: ${{ steps.prepare-matrices.outputs.matrices }}
     steps:
-      - name: Generate Token
+      - name: "Generate Short Lived OAuth App Token (ghs_*)"
         uses: actions/create-github-app-token@e995b4e40ace2eb5bf13137d9abe242c98f3aab6 # v1.6.0
-        id: app-token
+        id: oauth-token
         with:
-          app-id: "${{ secrets.BOT_APP_ID }}"
-          private-key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
+          app-id: "${{ secrets.BOT_APP_ID }}" # $BOT_APP_ID is found in GitHub App main settings page
+          private-key: "${{ secrets.BOT_JWT_PRIVATE_KEY }}" # $BOT_JWT_PRIVATE_KEY is generated in GitHub App main settings page, uses the X.509 private key format
 
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
-          token: "${{ steps.app-token.outputs.token }}"
+          token: "${{ steps.oauth-token.outputs.token }}"
 
       - name: Setup Python
         uses: actions/setup-python@65d7f2d534ac1bc67fcd62888c5f4f3d2cb2b236 # v4.7.1
@@ -65,7 +65,7 @@ jobs:
       - name: Prepare Matrices
         id: prepare-matrices
         env:
-          TOKEN: ${{ steps.app-token.outputs.token }}
+          TOKEN: ${{ steps.oauth-token.outputs.token }}
         shell: bash
         run: |
           if [[ -z "${{ inputs.appsToBuild }}" ]]; then
@@ -126,17 +126,17 @@ jobs:
           echo "${{ matrix.image.name }}" | grep -E "[a-zA-Z0-9_\.\-]+" || "Image Name is invalid"
           echo "${{ matrix.image.version }}" | grep -E "[a-zA-Z0-9_\.\-]+" || "Image Version is invalid"
 
-      - name: Generate Token
+      - name: "Generate Short Lived OAuth App Token (ghs_*)"
         uses: actions/create-github-app-token@e995b4e40ace2eb5bf13137d9abe242c98f3aab6 # v1.6.0
-        id: app-token
+        id: oauth-token
         with:
-          app-id: "${{ secrets.BOT_APP_ID }}"
-          private-key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
+          app-id: "${{ secrets.BOT_APP_ID }}" # $BOT_APP_ID is found in GitHub App main settings page
+          private-key: "${{ secrets.BOT_JWT_PRIVATE_KEY }}" # $BOT_JWT_PRIVATE_KEY is generated in GitHub App main settings page, uses the X.509 private key format
 
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
-          token: "${{ steps.app-token.outputs.token }}"
+          token: "${{ steps.oauth-token.outputs.token }}"
           fetch-depth: 1
 
       - name: Setup Docker Buildx
