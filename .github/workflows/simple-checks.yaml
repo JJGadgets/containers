@@ -21,7 +21,7 @@ jobs:
             cue:
               - added|modified: "apps/**/metadata.yaml"
               - added|modified: "apps/**/metadata.json"
-              - added|modified: "./.github/metadata.rules.cue"
+              - added|modified: "./.github/checks/metadata.rules.cue"
 
       - name: Setup CUE
         if: ${{ steps.filter.outputs.cue == 'true' }}
