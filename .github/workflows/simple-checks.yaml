@@ -32,5 +32,5 @@ jobs:
         if: ${{ steps.filter.outputs.cue == 'true' }}
         shell: bash
         run: |
-          find ./apps/ -name metadata.json | xargs -I {} cue vet --schema '#Spec' {} ./.github/metadata.rules.cue
-          find ./apps/ -name metadata.yaml | xargs -I {} cue vet --schema '#Spec' {} ./.github/metadata.rules.cue
+          find ./apps/ -name metadata.json | xargs -I {} cue vet --schema '#Spec' {} ./.github/checks/metadata.rules.cue
+          find ./apps/ -name metadata.yaml | xargs -I {} cue vet --schema '#Spec' {} ./.github/checks/metadata.rules.cue
