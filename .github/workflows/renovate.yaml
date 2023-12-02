@@ -15,7 +15,7 @@ on:
         default: debug
         required: false
   schedule:
-    - cron: "*/6 * * * *" # every 10 minutes
+    - cron: "0 * * * *" # every hour
   push:
     branches: ["main"]
     paths:

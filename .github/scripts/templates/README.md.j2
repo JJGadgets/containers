@@ -19,7 +19,7 @@ _A heavily opinionated collection of container images_
 
 </div>
 
-<div align="center>
+<div align="center">
 
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/JJGadgets/containers/badge)](https://securityscorecards.dev/viewer/?uri=github.com/JJGadgets/containers)
 

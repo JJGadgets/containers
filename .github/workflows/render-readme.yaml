@@ -4,17 +4,11 @@ name: "Render Readme"
 on:
   workflow_call:
     secrets:
-      BOT_USERNAME:
-        description: The username of the GitHub App
-        required: true
-      BOT_API_ID:
-        description: The hidden API ID of the GitHub App
-        required: true
       BOT_APP_ID:
         description: The App ID of the GitHub App (found in app settings)
         required: true
       BOT_JWT_PRIVATE_KEY:
-        description: The private key of the GitHub App
+        description: The private key of the GitHub App, used for generating JWT tokens, generated in GitHub App settings page, uses the X.509 private key format
         required: true
 
 jobs:
@@ -50,15 +44,6 @@ jobs:
         shell: bash
         run: python ./.github/scripts/render-readme.py
 
-      # - name: Commit Changes
-      #   shell: bash
-      #   run: |
-      #     git config --global user.name "${{ secrets.BOT_USERNAME }}"
-      #     git config --global user.email "${{ secrets.BOT_API_ID }}+${{ secrets.BOT_USERNAME }}[bot]@users.noreply.github.com"
-      #     git add ./README.md
-      #     git commit -m "chore: render README.md" || echo "No changes to commit"
-      #     git push origin || echo "No changes to push"
-
       # below is yoinked from https://gist.github.com/swinton/03e84635b45c78353b1f71e41007fc7c
       - name: Commit Changes
         env:
@@ -77,4 +62,3 @@ jobs:
             --field branch="$DESTINATION_BRANCH" \
             --field sha="$SHA" \
             || echo "No changes to push"
-
