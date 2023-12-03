@@ -33,6 +33,10 @@ on:
         description: The private key of the GitHub App, used for generating JWT tokens, generated in GitHub App settings page, uses the X.509 private key format
         required: true
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   prepare:
     name: Prepare to Build
@@ -94,9 +98,6 @@ jobs:
       fail-fast: false
       matrix:
         image: ["${{ fromJSON(needs.prepare.outputs.matrices).imagePlatforms }}"]
-    permissions:
-      contents: read
-      packages: write
     steps:
       - name: Lowercase repository owner
         shell: bash
