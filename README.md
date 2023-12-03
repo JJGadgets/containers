@@ -77,6 +77,8 @@ Each Image will be built with a `rolling` tag, along with tags specific to it's 
 
 Container | Channel | Image | Latest Tags
 --- | --- | --- | ---
+[gotosocial](https://github.com/JJGadgets//containers/pkgs/container/gotosocial) | stable | registry.jjgadgets.tech/jjgadgets/gotosocial |![0.12.2](https://img.shields.io/badge/0.12.2-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
+[gotosocial-rc](https://github.com/JJGadgets//containers/pkgs/container/gotosocial-rc) | rc | registry.jjgadgets.tech/jjgadgets/gotosocial-rc |![0.13.0-rc1](https://img.shields.io/badge/0.13.0--rc1-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 
 
 ### Automated tags
