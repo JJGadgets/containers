@@ -43,7 +43,7 @@ def get_latest_version(subdir, channel_name):
     elif os.path.isfile(os.path.join(ci_dir, "latest.sh")):
         return get_latest_version_sh(os.path.join(ci_dir, "latest.sh"), channel_name)
     elif os.path.isfile(os.path.join(subdir, channel_name, "latest.py")):
-       return get_latest_version_py(os.path.join(subdir, channel_name, "latest.py"), channel_name)
+        return get_latest_version_py(os.path.join(subdir, channel_name, "latest.py"), channel_name)
     elif os.path.isfile(os.path.join(subdir, channel_name, "latest.sh")):
         return get_latest_version_sh(os.path.join(subdir, channel_name, "latest.sh"), channel_name)
     return None
