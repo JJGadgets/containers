@@ -1,5 +1,5 @@
 ---
-app: gotosocial
+app: joplin
 base: false
 channels:
   - &c
