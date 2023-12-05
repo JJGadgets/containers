@@ -1,0 +1,15 @@
+---
+app: gotosocial
+base: false
+channels:
+  - &c
+    name: stable
+    platforms:
+      - "linux/amd64"
+    stable: true
+    tests:
+      enabled: true
+      type: web
+  # - <<: *c
+  #   name: beta # TODO: disabled because... Joplin's Docker image versions are always beta?
+  #   stable: false
