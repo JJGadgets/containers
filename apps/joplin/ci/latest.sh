@@ -6,7 +6,8 @@ if [[ "${channel}" == "beta" ]]; then
 fi
 
 if [[ "${channel}" == "stable" ]]; then
-    version="$(curl -sX GET "https://hub.docker.com/v2/repositories/joplin/server/tags/?page_size=1" | jq --raw-output '.results.[0].name' 2>/dev/null)"
+    # version="$(curl -sX GET "https://hub.docker.com/v2/repositories/joplin/server/tags/?page_size=1" | jq --raw-output '.results.[0].name' 2>/dev/null)"
+    version="2.13.5-beta"
 fi
 version="${version#*v}"
 version="${version#*release-}"
