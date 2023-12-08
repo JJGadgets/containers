@@ -1,0 +1,8 @@
+:8080 {
+    root * /web
+    rewrite * /error.html
+    file_server {
+        index error.html
+        status {{http.request.header.X-Code}}
+    }
+}
