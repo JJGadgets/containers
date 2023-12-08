@@ -3,6 +3,6 @@
     rewrite * /error.html
     file_server {
         index error.html
-        status {{http.request.header.X-Code}}
+        status {http.request.header.X-Code}
     }
 }
