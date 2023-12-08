@@ -8,5 +8,5 @@ channels:
       # - "linux/arm64"
     stable: true
     tests:
-      enabled: true
-      type: web
+      enabled: false # TODO: "OCI runtime exec failed: exec failed: unable to start container process: exec: "sh": executable file not found in $PATH: unknown"
+      # type: web
