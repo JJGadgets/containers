@@ -77,7 +77,7 @@ Each Image will be built with a `rolling` tag, along with tags specific to it's 
 
 Container | Channel | Image | Latest Tags
 --- | --- | --- | ---
-[gotosocial](https://github.com/JJGadgets//containers/pkgs/container/gotosocial) | stable | registry.jjgadgets.tech/jjgadgets/gotosocial |![0.12.2](https://img.shields.io/badge/0.12.2-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
+[gotosocial](https://github.com/JJGadgets//containers/pkgs/container/gotosocial) | stable | registry.jjgadgets.tech/jjgadgets/gotosocial |![0.13.0](https://img.shields.io/badge/0.13.0-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 [gotosocial-rc](https://github.com/JJGadgets//containers/pkgs/container/gotosocial-rc) | rc | registry.jjgadgets.tech/jjgadgets/gotosocial-rc |![0.13.0-rc2](https://img.shields.io/badge/0.13.0--rc2-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 [jjgadgets-error-page-ingress-nginx](https://github.com/JJGadgets//containers/pkgs/container/jjgadgets-error-page-ingress-nginx) | stable | registry.jjgadgets.tech/jjgadgets/jjgadgets-error-page-ingress-nginx |![1.0.0-caddy-2.7.5](https://img.shields.io/badge/1.0.0--caddy--2.7.5-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 [joplin]() | stable | registry.jjgadgets.tech/jjgadgets/joplin |
