@@ -1,0 +1,16 @@
+---
+app: gotosocial
+base: false
+channels:
+  - &c
+    name: stable
+    platforms:
+      - "linux/amd64"
+      - "linux/arm64"
+    stable: true
+    tests:
+      enabled: false # TODO: pass env vars and/or args to `dgoss run` tests: "invalid config: host must be set"
+      # type: web
+  - <<: *c
+    name: rc
+    stable: false
