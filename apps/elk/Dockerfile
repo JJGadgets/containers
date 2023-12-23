@@ -26,7 +26,7 @@ COPY --from=git /build/pnpm-lock.yaml ./
 COPY --from=git /build/patches ./patches
 RUN pnpm i --frozen-lockfile --ignore-scripts
 ## Copy all source files
-COPY --from=git /build ./
+COPY --from=git /build/. ./
 ## Run full install with every postinstall script ( This needs project file )
 RUN pnpm i --frozen-lockfile
 ## Build
