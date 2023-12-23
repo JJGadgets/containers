@@ -53,5 +53,5 @@ ENV NUXT_PUBLIC_DISABLE_VERSION_CHECK=true
 EXPOSE 5314/tcp
 USER 42069:42069
 VOLUME ["/elk/data"]
-ENTRYPOINT ["node"]
+ENTRYPOINT ["/nodejs/bin/node"]
 CMD ["/elk/.output/server/index.mjs"]
