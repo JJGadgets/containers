@@ -7,6 +7,7 @@ FROM gcr.io/distroless/nodejs18-debian12:nonroot@sha256:818b5d492a4f25fb3260d206
 
 ARG upstreamuser=joplin
 WORKDIR /joplin
+RUN npm install --global yarn
 COPY --chown=1000:1000 --from=upstream /home/$upstreamuser/packages /joplin
 
 WORKDIR /joplin/server
