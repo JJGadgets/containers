@@ -15,5 +15,5 @@ ENV NODE_ENV=production
 ENV RUNNING_IN_DOCKER=1
 ENV APP_PORT=22300
 USER 1000:1000
-ENTRYPOINT ["yarn"]
+ENTRYPOINT ["/nodejs/bin/yarn"]
 CMD ["start-prod"]

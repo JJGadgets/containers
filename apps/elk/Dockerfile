@@ -7,6 +7,7 @@ FROM base AS git
 RUN apk update
 RUN apk add --no-cache git
 WORKDIR /build
+ARG VERSION
 RUN git clone --depth 1 --branch "v${VERSION}" https://github.com/elk-zone/elk /build
 # Stage 2: Build Elk (taken from upstream Elk Dockerfile)
 FROM base AS builder
