@@ -7,7 +7,7 @@ FROM base AS git
 RUN apk update
 RUN apk add --no-cache git
 WORKDIR /build
-RUN git clone --depth 1 --branch ${VERSION} https://github.com/elk-zone/elk /build
+RUN git clone --depth 1 --branch "v${VERSION}" https://github.com/elk-zone/elk /build
 # Stage 2: Build Elk (taken from upstream Elk Dockerfile)
 FROM base AS builder
 ## Set compile-time env vars (this is for my use, so will point to my GoToSocial instance)
