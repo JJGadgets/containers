@@ -3,7 +3,7 @@ FROM docker.io/joplin/server:2.13.5-beta AS upstream
 
 # Stage 2: Working app image
 ## check node version from https://github.com/laurent22/joplin/blob/80c2a87da20dbf7a7fc34b451d4234805a3d51a0/Dockerfile.server#L56
-FROM gcr.io/distroless/nodejs18-debian12:nonroot@sha256:818b5d492a4f25fb3260d2069b378a0e986c7f660c9cfe40dc92e14d97d85e02
+FROM gcr.io/distroless/nodejs18-debian12:nonroot@sha256:645287632214ec051adca0302e744b850f9ae0e10d13f7dcf07e57de80770e35
 
 ARG upstreamuser=joplin
 WORKDIR /joplin
