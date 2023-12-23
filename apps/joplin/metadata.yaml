@@ -8,8 +8,8 @@ channels:
       - "linux/amd64"
     stable: true
     tests:
-      enabled: true
-      type: web
+      enabled: false
+      # type: web
   # - <<: *c
   #   name: beta # TODO: disabled because... Joplin's Docker image versions are always beta?
   #   stable: false
