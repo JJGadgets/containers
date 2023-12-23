@@ -1,13 +1,15 @@
 # Define build-time variables
 ARG VERSION
 
+FROM docker.io/library/node:lts-alpine AS base
 # Stage 1: clone Elk repo
-# Stage 1: Build Elk (taken from upstream Elk Dockerfile)
-FROM docker.io/library/node:lts-alpine AS builder
+FROM base AS git
 RUN apk update
 RUN apk add --no-cache git
 WORKDIR /build
 RUN git clone --depth 1 --branch ${VERSION} https://github.com/elk-zone/elk /build
+# Stage 2: Build Elk (taken from upstream Elk Dockerfile)
+FROM base AS builder
 ## Set compile-time env vars (this is for my use, so will point to my GoToSocial instance)
 ENV NUXT_PUBLIC_DEFAULT_SERVER=social.jjgadgets.tech
 ENV NUXT_PUBLIC_SINGLE_INSTANCE=true
@@ -17,13 +19,13 @@ WORKDIR /elk
 ## Prepare pnpm https://pnpm.io/installation#using-corepack
 RUN corepack enable
 ## Prepare build deps ( ignore postinstall scripts for now )
-COPY /build/package.json ./
-COPY /build/.npmrc ./
-COPY /build/pnpm-lock.yaml ./
-COPY /build/patches ./patches
+COPY --from=git /build/package.json ./
+COPY --from=git /build/.npmrc ./
+COPY --from=git /build/pnpm-lock.yaml ./
+COPY --from=git /build/patches ./patches
 RUN pnpm i --frozen-lockfile --ignore-scripts
 ## Copy all source files
-COPY /build ./
+COPY --from=git /build ./
 ## Run full install with every postinstall script ( This needs project file )
 RUN pnpm i --frozen-lockfile
 ## Build
