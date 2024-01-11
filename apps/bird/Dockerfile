@@ -6,5 +6,5 @@ RUN apk add bird=${VERSION}
 RUN apk add catatonit
 
 USER 0:0
-ENTRYPOINT ["/catatonit"]
-CMD ["/bird", "-d"]
+ENTRYPOINT ["/usr/bin/catatonit"]
+CMD ["/usr/sbin/bird", "-d", "-f"]
