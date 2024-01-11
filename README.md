@@ -77,6 +77,7 @@ Each Image will be built with a `rolling` tag, along with tags specific to it's 
 
 Container | Channel | Image | Latest Tags
 --- | --- | --- | ---
+[bird](https://github.com/JJGadgets//containers/pkgs/container/bird) | stable | registry.jjgadgets.tech/jjgadgets/bird |![2.14-r0](https://img.shields.io/badge/2.14--r0-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 [elk](https://github.com/JJGadgets//containers/pkgs/container/elk) | stable | registry.jjgadgets.tech/jjgadgets/elk |![0.10.3](https://img.shields.io/badge/0.10.3-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 [gotosocial](https://github.com/JJGadgets//containers/pkgs/container/gotosocial) | stable | registry.jjgadgets.tech/jjgadgets/gotosocial |![0.13.1](https://img.shields.io/badge/0.13.1-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 [gotosocial-rc](https://github.com/JJGadgets//containers/pkgs/container/gotosocial-rc) | rc | registry.jjgadgets.tech/jjgadgets/gotosocial-rc |![0.13.0-rc2](https://img.shields.io/badge/0.13.0--rc2-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
