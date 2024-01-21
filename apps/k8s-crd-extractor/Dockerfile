@@ -19,4 +19,4 @@ WORKDIR /.datree
 # mount volumes at /.datree/crdSchemas to get final JSON schema files
 
 ENTRYPOINT ["/usr/bin/catatonit", "--"]
-CMD ["bash", "-c", "cp -r /app/openapi2jsonschema.py /.datree/crds/openapi2jsonschema.py && /app/crd-extractor.sh"]
+CMD ["bash", "-c", "mkdir -p /.datree/crds && cp -r /app/openapi2jsonschema.py /.datree/crds/openapi2jsonschema.py && /app/crd-extractor.sh"]
