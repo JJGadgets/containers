@@ -1,0 +1,20 @@
+FROM public.ecr.aws/docker/library/alpine:3.19.0
+USER 1000:1000
+
+WORKDIR /app
+ADD --chown=1000:1000 --chmod=555 https://raw.githubusercontent.com/datreeio/CRDs-catalog/89a756e59d7c9524ff07a7408a1d6b8dae5ccce5/Utilities/crd-extractor.sh /app/crd-extractor.sh
+
+RUN apk add bash=5.2.21-r0
+RUN apk add catatonit=0.2.0-r0
+RUN apk add kubectl=1.28.4-r0
+RUN apk add python3=3.11.6-r1
+RUN apk add py3-yaml=6.0.1-r1
+#RUN apk add py3-pip=23.3.1-r0
+#RUN pip3 install pyyaml
+
+WORKDIR /.datree
+ENV HOME=/
+# mount volumes at /.datree/crdSchemas to get final JSON schema files
+
+ENTRYPOINT ["/usr/bin/catatonit", "--"]
+CMD ["bash", "/app/crd-extractor.sh"]
