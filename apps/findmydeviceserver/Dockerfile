@@ -25,10 +25,10 @@ ARG VERSION
 WORKDIR /fmd
 
 ADD --chmod=555 --chown=1000:1000 --checksum=sha256:af8a43230338de67563878a25872ee2fd3d6af0f3513d55dd1ec672ad69dae53 https://github.com/openSUSE/catatonit/releases/download/v0.2.0/catatonit.x86_64 /catatonit
-COPY --chmod=555 --chown=1000:1000 --from=builder /fmd /fmd/server
-COPY --chmod=555 --chown=1000:1000 --from=builder /usr/lib/libobjectbox.so /usr/lib/libobjectbox.so
-COPY --chmod=555 --chown=1000:1000 --from=builder /go/src/findmydeviceserver-${VERSION}/web /fmd/web
-COPY --chmod=555 --chown=1000:1000 --from=builder /go/src/findmydeviceserver-${VERSION}/extra /fmd/extra
+COPY --from=builder /fmd /fmd/server
+COPY --from=builder /usr/lib/libobjectbox.so /usr/lib/libobjectbox.so
+COPY --from=builder /go/src/findmydeviceserver-${VERSION}/web /fmd/web
+COPY --from=builder /go/src/findmydeviceserver-${VERSION}/extra /fmd/extra
 
 USER 1000:1000
 WORKDIR /fmd/objectbox
