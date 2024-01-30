@@ -6,10 +6,10 @@ ARG VERSION
 FROM docker.io/library/golang:1.21.6-bookworm AS builder
 ARG VERSION
 
-ADD https://gitlab.com/Nulide/findmydeviceserver/-/archive/v${VERSION}/findmydeviceserver-v${VERSION}.tar.gz /source.tar.gz
+ADD https://gitlab.com/Nulide/findmydeviceserver/-/archive/${VERSION}/findmydeviceserver-${VERSION}.tar.gz /source.tar.gz
 RUN tar -C /go/src -xvf /source.tar.gz
 
-WORKDIR /go/src/findmydeviceserver-v${VERSION}
+WORKDIR /go/src/findmydeviceserver-${VERSION}
 ENV GOPATH /go
 
 ADD https://raw.githubusercontent.com/objectbox/objectbox-go/main/install.sh objectbox-install.sh
@@ -27,8 +27,8 @@ WORKDIR /fmd
 ADD --chmod=555 --chown=1000:1000 --checksum=sha256:af8a43230338de67563878a25872ee2fd3d6af0f3513d55dd1ec672ad69dae53 https://github.com/openSUSE/catatonit/releases/download/v0.2.0/catatonit.x86_64 /catatonit
 COPY --chmod=555 --chown=1000:1000 --from=builder /fmd /fmd/server
 COPY --chmod=555 --chown=1000:1000 --from=builder /usr/lib/libobjectbox.so /usr/lib/libobjectbox.so
-COPY --chmod=555 --chown=1000:1000 --from=builder /go/src/findmydeviceserver-v${VERSION}/web /fmd/web
-COPY --chmod=555 --chown=1000:1000 --from=builder /go/src/findmydeviceserver-v${VERSION}/extra /fmd/extra
+COPY --chmod=555 --chown=1000:1000 --from=builder /go/src/findmydeviceserver-${VERSION}/web /fmd/web
+COPY --chmod=555 --chown=1000:1000 --from=builder /go/src/findmydeviceserver-${VERSION}/extra /fmd/extra
 
 USER 1000:1000
 WORKDIR /fmd/objectbox
