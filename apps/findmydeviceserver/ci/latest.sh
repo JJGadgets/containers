@@ -2,7 +2,7 @@
 channel=$1
 
 if [[ "${channel}" == "master" ]]; then
-    version="$(date +%Y%m%d)"
+    version="master"
 fi
 
 if [[ "${channel}" == "stable" ]]; then
