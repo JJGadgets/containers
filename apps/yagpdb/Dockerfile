@@ -26,7 +26,7 @@ ADD --chmod=555 --chown=1000:1000 --checksum=sha256:af8a43230338de67563878a25872
 COPY --from=builder /yagpdb /app/yagpdb
 
 USER 1000:1000
-EXPOSE 8080/tcp
+EXPOSE 5000/tcp
 VOLUME ["/app/soundboard"]
 ENTRYPOINT ["/catatonit", "--", "/app/yagpdb"]
-
+CMD ["-all", "-ts", "-exthttps=true", "-https=false"]
