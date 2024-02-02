@@ -12,6 +12,11 @@ RUN rm /source.tar.gz
 WORKDIR /go/src/yagpdb-${VERSION}
 ENV GOPATH /go
 
+# require Postgres TLS (to be used in Kubernetes with Postgres operators that automagically manage TLS)
+# Golang's pq doesn't support sslmode=prefer :/ (https://github.com/lib/pq/issues/776)
+RUN grep -Rl 'sslmode=disable' . | xargs -I% /bin/bash -c "sed -e 's/sslmode=disable/sslmode=require/g' %"
+RUN grep -Rl 'sslmode="disable"' . | xargs -I% /bin/bash -c "sed -e 's/sslmode=\"disable\"/sslmode=\"require\"/g' %"
+
 RUN go mod download && go mod verify
 WORKDIR /go/src/yagpdb-${VERSION}/cmd/yagpdb
 RUN CGO_ENABLED=0 GOOS=linux go build -o /yagpdb -v -ldflags="-X github.com/botlabs-gg/yagpdb/v2/common.VERSION=v${VERSION}"
