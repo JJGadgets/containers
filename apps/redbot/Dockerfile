@@ -10,6 +10,8 @@ RUN python3 -m venv /app
 ENV VIRTUAL_ENV=/app
 ENV PATH="/app/bin:$PATH"
 RUN pip install --no-cache-dir --upgrade pip wheel
+ENV VIRTUAL_ENV=/app
+ENV PATH="/app/bin:$PATH"
 ARG VERSION
 RUN pip install --no-cache-dir --upgrade "Red-DiscordBot[postgres]==${VERSION}"
 
