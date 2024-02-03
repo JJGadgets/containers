@@ -87,6 +87,7 @@ Container | Channel | Image | Latest Tags
 [joplin](https://github.com/JJGadgets//containers/pkgs/container/joplin) | stable | registry.jjgadgets.tech/jjgadgets/joplin |![2.13.5-beta](https://img.shields.io/badge/2.13.5--beta-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 [k8s-crd-extractor](https://github.com/JJGadgets//containers/pkgs/container/k8s-crd-extractor) | stable | registry.jjgadgets.tech/jjgadgets/k8s-crd-extractor |![20240203](https://img.shields.io/badge/20240203-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 [rclone](https://github.com/JJGadgets//containers/pkgs/container/rclone) | stable | registry.jjgadgets.tech/jjgadgets/rclone |![1.65.2](https://img.shields.io/badge/1.65.2-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
+[redbot](https://github.com/JJGadgets//containers/pkgs/container/redbot) | stable | registry.jjgadgets.tech/jjgadgets/redbot |![3.5.5](https://img.shields.io/badge/3.5.5-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 [yagpdb](https://github.com/JJGadgets//containers/pkgs/container/yagpdb) | stable | registry.jjgadgets.tech/jjgadgets/yagpdb |![2.33.1](https://img.shields.io/badge/2.33.1-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 
 
