@@ -42,7 +42,6 @@ with open(configPath + "/Red-DiscordBot/config.json", "w", encoding="utf-8") as 
 def redbotRun(args: list):
     runArgs: list = ["", redbotName]
     runArgs.extend(args)
-    print(runArgs)
     with patch.object(sys, 'argv', runArgs):
         try:
             os.environ["XDG_CONFIG_HOME"] = configPath
