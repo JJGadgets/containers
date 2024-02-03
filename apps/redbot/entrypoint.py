@@ -14,13 +14,18 @@ os.makedirs(configPath + "/Red-DiscordBot", exist_ok=True)
 
 # Stage 1: redbot-setup
 
+def readFileOrEnv(file: str, env: str):
+    if os.environ.get(file) is not None:
+        with open(os.environ.get(file), "r", encoding="utf-8") as f: return f.read()
+    else: return os.environ.get(env)
+
 def pgConfig():
     if storageType == "Postgres": return {
         "host": os.environ.get("PGHOST") or "db",
         "port": int(os.environ.get("PGPORT") or int(5432)),
         "user": os.environ.get("PGUSER") or "redbot",
-        "password": os.environ.get("PGPASSWORD") or "redbot",
-        "database": os.environ.get("PGDB") or "redbot"
+        "password": readFileOrEnv("PGPASSFILE", "PGPASSWORD"),
+        "database": os.environ.get("PGDATABASE") or "redbot"
     }
     else: return {}
 
@@ -56,12 +61,8 @@ def prefixAppend(prefix: str):
 if os.environ.get("PREFIX"): prefixAppend(os.environ.get("PREFIX"))
 if os.environ.get("PREFIXES"): 
     for p in os.environ.get("PREFIXES").strip().split(): prefixAppend(p)
-redbotRun(prefixList)
 
-def readFileOrEnv(file: str, env: str):
-    if os.environ.get(file) is not None:
-        with open(os.environ.get(file), "r", encoding="utf-8") as f: return f.read()
-    else: return os.environ.get(env)
+redbotRun(prefixList)
 redbotRun(["--edit", "--no-prompt", "--token", readFileOrEnv("TOKEN_FILE", "TOKEN")])
 if os.environ.get("OWNER") or os.environ.get("OWNER_FILE"): redbotRun(["--edit", "--no-prompt", "--owner", readFileOrEnv("OWNER_FILE", "OWNER")])
 
