@@ -7,7 +7,7 @@ ARG VERSION
 WORKDIR /app
 
 RUN python3 -m venv /app
-ENV VIRTUAL_ENV /app
+ENV VIRTUAL_ENV=/app
 ENV PATH="/app/bin:$PATH"
 RUN pip install --no-cache-dir --upgrade pip wheel
 ARG VERSION
@@ -21,9 +21,8 @@ WORKDIR /app
 COPY --from=builder /app /app
 COPY ./apps/redbot/entrypoint.py /app/bin/entrypoint.py
 
-ENV VIRTUAL_ENV /app
+ENV VIRTUAL_ENV=/app
 ENV PATH="/app/bin:$PATH"
-ENV HOME="/config"
 
 ADD --chmod=555 --chown=1000:1000 --checksum=sha256:af8a43230338de67563878a25872ee2fd3d6af0f3513d55dd1ec672ad69dae53 https://github.com/openSUSE/catatonit/releases/download/v0.2.0/catatonit.x86_64 /catatonit
 
