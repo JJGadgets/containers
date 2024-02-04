@@ -40,8 +40,10 @@ redbotConfig: object = {
     }
 }
 
-with open(configPath + "/Red-DiscordBot/config.json", "w", encoding="utf-8") as f:
-    if json.loads(f, parse_int=True) == redbotConfig: json.dump(redbotConfig, f, ensure_ascii=True, indent=4) # write direct to file
+with open(configPath + "/Red-DiscordBot/config.json", "r+", encoding="utf-8") as f:
+    # print(json.load(f, parse_int=True))
+    # if json.load(f, parse_int=True) == redbotConfig:
+    json.dump(redbotConfig, f, ensure_ascii=True, indent=4) # write direct to file
 
 # Stage 2: redbot
 
