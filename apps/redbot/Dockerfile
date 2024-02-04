@@ -22,3 +22,4 @@ ENV BASE_PATH=/config
 ENV XDG_CONFIG_HOME=/config/config
 VOLUME ["/config"]
 ENTRYPOINT ["/app/bin/redbot"]
+CMD ["--init"]
