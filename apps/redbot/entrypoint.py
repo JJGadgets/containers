@@ -1,3 +1,4 @@
+#!/app/bin/python3
 # NOTE: for simplicity, this script doesn't handle errors, they get passed to RedBot for it to handle
 import json
 import os
@@ -12,6 +13,9 @@ dataPath: str = os.environ.get("DATA_PATH") or f'{basePath}/data'
 configPath: str = os.environ.get("CONFIG_PATH") or f'{basePath}/config'
 os.makedirs(dataPath, exist_ok=True)
 os.makedirs(configPath + "/Red-DiscordBot", exist_ok=True)
+
+currentArgs: list = sys.argv
+currentArgs.pop(0)
 
 # Stage 1: redbot-setup
 
@@ -40,13 +44,6 @@ redbotConfig: object = {
     }
 }
 
-with open(configPath + "/Red-DiscordBot/config.json", "w", encoding="utf-8") as f:
-    # print(json.load(f, parse_int=True))
-    # if json.load(f, parse_int=True) == redbotConfig:
-    json.dump(redbotConfig, f, ensure_ascii=True, indent=4) # write direct to file
-
-# Stage 2: redbot
-
 def redbotRun(args: list):
     runArgs: list = ["", redbotName]
     runArgs.extend(args) # e.g. ["", redbotName, "edit", "--no-prompt"]
@@ -65,8 +62,19 @@ if os.environ.get("PREFIX"): prefixAppend(os.environ.get("PREFIX"))
 if os.environ.get("PREFIXES"): 
     for p in os.environ.get("PREFIXES").strip().split(): prefixAppend(p)
 
-redbotRun(prefixList)
-redbotRun(["--edit", "--no-prompt", "--token", readFileOrEnv("TOKEN_FILE", "TOKEN")])
-if os.environ.get("OWNER") or os.environ.get("OWNER_FILE"): redbotRun(["--edit", "--no-prompt", "--owner", readFileOrEnv("OWNER_FILE", "OWNER")])
+if "--init" in currentArgs:
+    print("Configuring RedBot...")
+    # Stage 1: redbot-setup
+    with open(configPath + "/Red-DiscordBot/config.json", "w", encoding="utf-8") as f:
+        json.dump(redbotConfig, f, ensure_ascii=True, indent=4) # write direct to file
 
-sys.exit(redbotRun([]))
+    # Stage 2: redbot edit
+    redbotRun(prefixList)
+    redbotRun(["--edit", "--no-prompt", "--token", readFileOrEnv("TOKEN_FILE", "TOKEN")])
+    if os.environ.get("OWNER") or os.environ.get("OWNER_FILE"): redbotRun(["--edit", "--no-prompt", "--owner", readFileOrEnv("OWNER_FILE", "OWNER")])
+
+    currentArgs.remove("--init")
+
+# Stage 3: run redbot
+print("Running RedBot...")
+sys.exit(redbotRun(currentArgs))
