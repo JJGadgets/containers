@@ -1,6 +1,6 @@
 ---
-app: redbot
-base: true
+app: redbot-distroless
+base: false
 channels:
   - &c
     name: stable
