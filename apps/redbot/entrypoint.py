@@ -1,3 +1,4 @@
+# NOTE: for simplicity, this script doesn't handle errors, they get passed to RedBot for it to handle
 import json
 import os
 import sys
@@ -40,19 +41,19 @@ redbotConfig: object = {
 }
 
 with open(configPath + "/Red-DiscordBot/config.json", "w", encoding="utf-8") as f:
-    json.dump(redbotConfig, f, ensure_ascii=True, indent=4)
+    if json.loads(f, parse_int=True) == redbotConfig: json.dump(redbotConfig, f, ensure_ascii=True, indent=4) # write direct to file
 
 # Stage 2: redbot
 
 def redbotRun(args: list):
     runArgs: list = ["", redbotName]
-    runArgs.extend(args)
-    with patch.object(sys, 'argv', runArgs):
+    runArgs.extend(args) # e.g. ["", redbotName, "edit", "--no-prompt"]
+    with patch.object(sys, 'argv', runArgs): # context manager, allows safe overriding of env vars and sys.argv
         try:
             os.environ["XDG_CONFIG_HOME"] = configPath
             from redbot.__main__ import main # importing before the env var overwrite won't propagate the env var to the imported function
             main()
-        except SystemExit:
+        except SystemExit: # allows entrypoint.py to continue when main() passes sys.exit()
             return
 
 prefixList: list = ["--edit", "--no-prompt"]
