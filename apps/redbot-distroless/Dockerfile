@@ -1,6 +1,6 @@
 # Define build-time variables
 ARG VERSION
-FROM ghcr.io/jjgadgets/redbot:${VERSION} AS builder
+FROM ghcr.io/jjgadgets/redbot:${VERSION}@sha256:77fdb8aa315f39e6ce89c2ff027526ec0acea170673279e2599f88596d81b852 AS builder
 
 # Stage 2: Working app image
 FROM gcr.io/distroless/python3-debian12:nonroot@sha256:02c3a74bee78c927ab39dd739f0e56e36675e6adc9032208abb7ed8b83067c74
