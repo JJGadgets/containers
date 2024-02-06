@@ -4,6 +4,9 @@ ARG VERSION
 # Stage 1: Build (pulled from upstream Dockerfile https://github.com/botlabs-gg/yagpdb/blob/7e6d553bd203680a0a1d68afd94f815478538611/yagpdb_docker/Dockerfile)
 FROM docker.io/library/python:3.11.7-slim-bookworm
 ARG VERSION
+
+RUN apt update && apt install -y git && rm -rf /var/lib/apt /var/cache
+
 USER 1000:1000
 WORKDIR /config
 WORKDIR /app
