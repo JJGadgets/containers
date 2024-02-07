@@ -2,7 +2,7 @@
 ARG VERSION
 
 # Stage 1: Build (pulled from upstream Dockerfile https://github.com/botlabs-gg/yagpdb/blob/7e6d553bd203680a0a1d68afd94f815478538611/yagpdb_docker/Dockerfile)
-FROM docker.io/library/golang:1.21.6-bookworm AS builder
+FROM docker.io/library/golang:1.22.0-bookworm AS builder
 ARG VERSION
 
 ADD https://github.com/botlabs-gg/yagpdb/archive/refs/tags/v${VERSION}.tar.gz /source.tar.gz
