@@ -21,3 +21,5 @@ ENV XDG_DATA_HOME /config/data
 USER 1000:1000
 ENTRYPOINT ["/caddy"]
 # NOTE: no `CMD` here, other image flavours will have the `CMD` set
+
+LABEL org.opencontainers.image.source="https://github.com/caddyserver/caddy"

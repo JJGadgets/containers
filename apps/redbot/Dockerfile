@@ -26,3 +26,6 @@ ENV XDG_CONFIG_HOME=/config/config
 VOLUME ["/config"]
 ENTRYPOINT ["/app/bin/redbot"]
 CMD ["--init"]
+
+
+LABEL org.opencontainers.image.source="https://github.com/Cog-Creators/Red-Dashboard"

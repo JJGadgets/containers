@@ -14,3 +14,5 @@ USER 1000:1000
 VOLUME ["/gotosocial/storage"]
 ENTRYPOINT ["/gotosocial/gotosocial"]
 CMD ["server", "start"]
+
+LABEL org.opencontainers.image.source="https://github.com/superseriousbusiness/gotosocial"
