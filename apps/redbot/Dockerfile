@@ -5,7 +5,8 @@ ARG VERSION
 FROM docker.io/library/python:3.11.7-slim-bookworm
 ARG VERSION
 
-RUN apt update && apt install -y git && rm -rf /var/lib/apt /var/cache
+# why openjdk? its required for the Audio cog, specifically to run lavalink. We don't need to install lavalink ourselves, due to it automagically being installed by the audio cog
+RUN apt update && apt install -y git openjdk-17-jdk && rm -rf /var/lib/apt /var/cache
 
 USER 1000:1000
 WORKDIR /config
