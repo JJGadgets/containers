@@ -35,7 +35,7 @@ RUN pnpm i --frozen-lockfile
 RUN pnpm build
 
 # Stage 2: Working app image
-FROM gcr.io/distroless/nodejs20-debian12:nonroot@sha256:269e058a0b80a1d8cf8d2586c4370c3de470034d4d22d83ae31da4451a6a3ff8
+FROM gcr.io/distroless/nodejs20-debian12:nonroot@sha256:c4c595a36ad2ced3cd952fad295a6afcb4469e91927159cfb95790031fe65d95
 WORKDIR /elk/data
 WORKDIR /elk
 COPY --chown=42069:42069 --from=builder /elk/.output /elk/.output
