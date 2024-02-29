@@ -19,14 +19,14 @@ RUN /app/bin/pip install --no-cache-dir --upgrade pip wheel
 ARG VERSION
 RUN /app/bin/pip install --no-cache-dir --upgrade Red-DiscordBot[postgres]==${VERSION}
 # as of 2024-02-04, the bin/redbot just calls redbot.main(), so we might as well override it with our entrypoint.py
-COPY --chmod=555 --chown=1000:1000 ./apps/redbot/entrypoint.py /app/bin/redbot
+COPY --chmod=555 --chown=1000:1000 ./apps/redbot/entrypoint.py /app/entrypoint.py
 
 USER 1000:1000
 ENV BASE_PATH=/config
 ENV XDG_CONFIG_HOME=/config/config
+ENV CONTAINER_INIT=true
 VOLUME ["/config"]
-ENTRYPOINT ["/app/bin/redbot"]
-CMD ["--init"]
+ENTRYPOINT ["/app/bin/python3" "/app/entrypoint.py"]
 
-
+# Renovate changelogs
 LABEL org.opencontainers.image.source="https://github.com/Cog-Creators/Red-Dashboard"

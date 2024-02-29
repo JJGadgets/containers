@@ -62,7 +62,7 @@ if os.environ.get("PREFIX"): prefixAppend(os.environ.get("PREFIX"))
 if os.environ.get("PREFIXES"): 
     for p in os.environ.get("PREFIXES").strip().split(): prefixAppend(p)
 
-if "--init" in currentArgs:
+if "--no-container-init" not in currentArgs or os.environ.get("CONTAINER_INIT") == "true":
     print("Configuring RedBot...")
     # Stage 1: redbot-setup
     with open(configPath + "/Red-DiscordBot/config.json", "w", encoding="utf-8") as f:
