@@ -26,7 +26,7 @@ ENV BASE_PATH=/config
 ENV XDG_CONFIG_HOME=/config/config
 ENV CONTAINER_INIT=true
 VOLUME ["/config"]
-ENTRYPOINT ["/app/bin/python3" "/app/entrypoint.py"]
+ENTRYPOINT ["/app/bin/python3", "/app/entrypoint.py"]
 
 # Renovate changelogs
 LABEL org.opencontainers.image.source="https://github.com/Cog-Creators/Red-Dashboard"
