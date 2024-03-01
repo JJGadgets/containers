@@ -73,8 +73,6 @@ if "--no-container-init" not in currentArgs or os.environ.get("CONTAINER_INIT") 
     redbotRun(["--edit", "--no-prompt", "--token", readFileOrEnv("TOKEN_FILE", "TOKEN")])
     if os.environ.get("OWNER") or os.environ.get("OWNER_FILE"): redbotRun(["--edit", "--no-prompt", "--owner", readFileOrEnv("OWNER_FILE", "OWNER")])
 
-    currentArgs.remove("--init")
-
 # Stage 3: run redbot
 print("Running RedBot...")
 sys.exit(redbotRun(currentArgs))
