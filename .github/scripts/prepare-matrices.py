@@ -13,7 +13,6 @@ from os.path import isfile
 
 # read repository name and repository owner's username from custom env vars, else read from GitHub Actions default env vars
 repo_owner = os.environ.get('REPO_OWNER', os.environ.get('GITHUB_REPOSITORY_OWNER'))
-repo_name = os.environ.get('REPO_NAME', os.environ.get('GITHUB_REPOSITORY').replace(repo_owner, ''))
 
 TESTABLE_PLATFORMS = ["linux/amd64"]
 
@@ -117,9 +116,14 @@ def get_image_metadata(subdir, meta, forRelease=False, force=False, channels=Non
 
             toBuild.setdefault("platforms", []).append(platform)
 
+            target_os = platform.split("/")[0]
+            target_arch = platform.split("/")[1]
+
             platformToBuild = {}
             platformToBuild["name"] = toBuild["name"]
             platformToBuild["platform"] = platform
+            platformToBuild["target_os"] = target_os
+            platformToBuild["target_arch"] = target_arch
             platformToBuild["version"] = version
             platformToBuild["channel"] = channel["name"]
 
