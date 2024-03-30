@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/busybox:1.36.1@sha256:650fd573e056b679a5110a70aabeb01e26b76e545ec4b9c70a9523f2dfaf18c6 AS upstream
+FROM public.ecr.aws/docker/library/busybox:1.36.1@sha256:c3839dd800b9eb7603340509769c43e146a74c63dca3045a8e7dc8ee07e53966 AS upstream
 ARG VERSION
 USER 1000:1000
 WORKDIR /app
