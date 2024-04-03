@@ -23,7 +23,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o /yagpdb -v -ldflags="-X github.com/botl
 
 # Stage 2: Working app image
 #FROM gcr.io/distroless/cc-debian12:nonroot@sha256:6cf8f0fafa8b4b911eefa9be9e2fe40fcf380f56de25d203dd9a3782c255d1f3
-FROM gcr.io/distroless/static-debian12:nonroot@sha256:42c88655018248be5b8ed88261fca620f6d0dd55996fbb591de4969f250120e9
+FROM gcr.io/distroless/static-debian12:nonroot@sha256:e9ac71e2b8e279a8372741b7a0293afda17650d926900233ec3a7b2b7c22a246
 ARG VERSION
 WORKDIR /app
 
