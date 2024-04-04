@@ -190,6 +190,7 @@ jobs:
         with:
           build-args: |-
             VERSION=${{ matrix.image.version }}
+            PKGVER=${{ matrix.image.pkgver }}
             REVISION=${{ github.sha }}
             CHANNEL=${{ matrix.image.channel }}
           context: . # TODO: Use ${{ matrix.image.context }}, requires updates to all dockerfiles :-(

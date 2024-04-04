@@ -47,6 +47,18 @@ def get_latest_version(subdir, channel_name):
         return get_latest_version_sh(os.path.join(subdir, channel_name, "latest.sh"), channel_name)
     return None
 
+def get_latest_package_version(subdir, channel_name):
+    ci_dir =  os.path.join(subdir, "ci")
+    if os.path.isfile(os.path.join(ci_dir, "pkgver.py")):
+        return get_latest_version_py(os.path.join(ci_dir, "pkgver.py"), channel_name)
+    elif os.path.isfile(os.path.join(ci_dir, "pkgver.sh")):
+        return get_latest_version_sh(os.path.join(ci_dir, "pkgver.sh"), channel_name)
+    elif os.path.isfile(os.path.join(subdir, channel_name, "pkgver.py")):
+        return get_latest_version_py(os.path.join(subdir, channel_name, "pkgver.py"), channel_name)
+    elif os.path.isfile(os.path.join(subdir, channel_name, "pkgver.sh")):
+        return get_latest_version_sh(os.path.join(subdir, channel_name, "pkgver.sh"), channel_name)
+    return None
+
 def get_published_version(image_name):
     r = requests.get(
         f"https://api.github.com/users/{repo_owner}/packages/container/{image_name}/versions",
@@ -99,6 +111,7 @@ def get_image_metadata(subdir, meta, forRelease=False, force=False, channels=Non
             toBuild["published_version"] = published
 
         toBuild["version"] = version
+        toBuild["pkgver"] = get_latest_package_version(subdir, channel["name"])
 
         # Image Tags
         toBuild["tags"] = ["rolling", version]
@@ -126,6 +139,7 @@ def get_image_metadata(subdir, meta, forRelease=False, force=False, channels=Non
             platformToBuild["target_arch"] = target_arch
             platformToBuild["version"] = version
             platformToBuild["channel"] = channel["name"]
+            platformToBuild["pkgver"] = toBuild["pkgver"]
 
             if meta.get("base", False):
                 platformToBuild["label_type"] ="org.opencontainers.image.base"
