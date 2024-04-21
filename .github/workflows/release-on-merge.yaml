@@ -18,16 +18,16 @@ on:
 
 jobs:
   simple-checks:
-    uses: ./.github/workflows/simple-checks.yaml
+    uses: JJGadgets/containers/.github/workflows/simple-checks.yaml@main
 
   get-changed-images:
     needs: ["simple-checks"]
-    uses: ./.github/workflows/get-changed-images.yaml
+    uses: JJGadgets/containers/.github/workflows/get-changed-images.yaml@main
 
   build-images:
     needs: ["simple-checks", "get-changed-images"]
     if: ${{ needs.get-changed-images.outputs.addedOrModified == 'true' }}
-    uses: ./.github/workflows/build-images.yaml
+    uses: JJGadgets/containers/.github/workflows/build-images.yaml@main
     secrets: inherit
     with:
       appsToBuild: "${{ needs.get-changed-images.outputs.addedOrModifiedImages }}"
@@ -38,5 +38,5 @@ jobs:
     name: Render Readme
     needs: build-images
     if: ${{ always() && needs.build-images.result != 'failure' }}
-    uses: ./.github/workflows/render-readme.yaml
+    uses: JJGadgets/containers/.github/workflows/render-readme.yaml@main
     secrets: inherit
