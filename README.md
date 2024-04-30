@@ -89,9 +89,9 @@ Container | Channel | Image | Latest Tags
 [k8s-crd-extractor](https://github.com/JJGadgets//containers/pkgs/container/k8s-crd-extractor) | stable | registry.jjgadgets.tech/jjgadgets/k8s-crd-extractor |![20240219](https://img.shields.io/badge/20240219-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 [phanpy](https://github.com/JJGadgets//containers/pkgs/container/phanpy) | stable | registry.jjgadgets.tech/jjgadgets/phanpy |![2024.04.19.5145730](https://img.shields.io/badge/2024.04.19.5145730-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 [rclone](https://github.com/JJGadgets//containers/pkgs/container/rclone) | stable | registry.jjgadgets.tech/jjgadgets/rclone |![1.66.0](https://img.shields.io/badge/1.66.0-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
-[redbot-distroless](https://github.com/JJGadgets//containers/pkgs/container/redbot-distroless) | stable | registry.jjgadgets.tech/jjgadgets/redbot-distroless |![3.5.8](https://img.shields.io/badge/3.5.8-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
+[redbot-distroless](https://github.com/JJGadgets//containers/pkgs/container/redbot-distroless) | stable | registry.jjgadgets.tech/jjgadgets/redbot-distroless |![3.5.9](https://img.shields.io/badge/3.5.9-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 [samba-debian](https://github.com/JJGadgets//containers/pkgs/container/samba-debian) | stable | registry.jjgadgets.tech/jjgadgets/samba-debian |![4.17.12](https://img.shields.io/badge/4.17.12-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
-[yagpdb](https://github.com/JJGadgets//containers/pkgs/container/yagpdb) | stable | registry.jjgadgets.tech/jjgadgets/yagpdb |![2.36.1](https://img.shields.io/badge/2.36.1-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
+[yagpdb](https://github.com/JJGadgets//containers/pkgs/container/yagpdb) | stable | registry.jjgadgets.tech/jjgadgets/yagpdb |![2.37.0](https://img.shields.io/badge/2.37.0-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 
 
 ### Automated tags
