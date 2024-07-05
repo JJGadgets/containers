@@ -6,7 +6,7 @@ FROM public.ecr.aws/docker/library/caddy:${VERSION}-builder AS builder
 RUN xcaddy build
 
 # Stage 2 (App): Use Google's distroless Debian 12 static non-root image as base image for actual app image, and copy compiled Caddy binary
-FROM gcr.io/distroless/static-debian12:nonroot@sha256:e9ac71e2b8e279a8372741b7a0293afda17650d926900233ec3a7b2b7c22a246
+FROM gcr.io/distroless/static-debian12:nonroot@sha256:8dd8d3ca2cf283383304fd45a5c9c74d5f2cd9da8d3b077d720e264880077c65
 COPY --chown=1000:1000 --chmod=555 --from=builder /usr/bin/caddy /caddy
 # NOTE: This base image flavour won't set the setcap for NET_BIND_SERVICE yet, so that the fileserver image flavour can launch by default on :8080 without any Linux capabilities
 # Refer to `jjgadgets/caddy` image for a Caddy image that runs on privileged ports (<1024, Caddy uses :80 for HTTP and :443 for HTTPS by default)
