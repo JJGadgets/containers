@@ -3,7 +3,7 @@ ARG VERSION
 FROM ghcr.io/jjgadgets/redbot:${VERSION}@sha256:77fdb8aa315f39e6ce89c2ff027526ec0acea170673279e2599f88596d81b852 AS builder
 
 # Stage 2: Working app image
-FROM gcr.io/distroless/python3-debian12:nonroot@sha256:14c62b8925d3bb30319de2f346bde203fe18103a68898284a62db9d4aa54c794
+FROM gcr.io/distroless/python3-debian12:nonroot@sha256:c4606a57a920e8738d088aca6d486675aa0ee5ae01afd8c7df9fe52c21c95032
 USER 1000:1000
 WORKDIR /config
 WORKDIR /app
