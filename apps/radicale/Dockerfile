@@ -4,7 +4,7 @@ FROM docker.io/library/debian:12.6@sha256:1dc55ed6871771d4df68d393ed08d1ed9361c5
 # Define build-time variables
 ARG VERSION
 USER 0:0
-RUN apt update && apt install --yes --no-install-suggests --no-install-recommends python3-venv
+RUN apt update && apt install --yes --no-install-suggests --no-install-recommends python3-venv git
 USER 1000:1000
 WORKDIR /app
 RUN python3 -m venv . && /app/bin/pip install --upgrade --no-cache-dir radicale==$VERSION passlib[bcrypt] git+https://github.com/pvagner/radicale-auth-ldap.git@c9c9f7db9e6cff6f1cb2d4cd8dafa89d43cecdd1
