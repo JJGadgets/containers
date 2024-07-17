@@ -10,4 +10,5 @@ if [[ "${channel}" == "stable" ]]; then
 fi
 version="${version#*v}"
 version="${version#*release-}"
+version="${version#*-version}" # temporary for v3.2.2-version
 printf "%s" "${version}"
