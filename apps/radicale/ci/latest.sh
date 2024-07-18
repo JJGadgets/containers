@@ -6,9 +6,9 @@ if [[ "${channel}" == "beta" ]]; then
 fi
 
 if [[ "${channel}" == "stable" ]]; then
-    version="$(curl -sX GET "https://api.github.com/repos/Kozea/Radicale/releases/latest" | jq --raw-output '.tag_name' 2>/dev/null)"
+    #version="$(curl -sX GET "https://api.github.com/repos/Kozea/Radicale/releases/latest" | jq --raw-output '.tag_name' 2>/dev/null)"
+    version="3.2.2"
 fi
 version="${version#*v}"
 version="${version#*release-}"
-version="${version#*-version}" # temporary for v3.2.2-version
 printf "%s" "${version}"

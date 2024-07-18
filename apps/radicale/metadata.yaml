@@ -11,6 +11,6 @@ channels:
     tests:
       enabled: false # TODO: pass env vars and/or args to `dgoss run` tests: "invalid config: host must be set"
       # type: web
-  - <<: *c
-    name: beta
-    stable: false
+  #- <<: *c
+  #  name: beta
+  #  stable: false
