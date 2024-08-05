@@ -1,4 +1,4 @@
-FROM ghcr.io/jjgadgets/caddy-distroless-base:2.7.6@sha256:7a16fbac33728694301f18b5414dd257e9f2902fc0d1d5c8919bf86c73b93570
+FROM ghcr.io/jjgadgets/caddy-distroless-base:2.8.4@sha256:e0a07a7dff8ee21e768d3c36a5ca3e64092fc5d8b11743b59cddeba95e037201
 COPY --chown=1000:1000 --chmod=555 ./apps/jjgadgets-error-page-ingress-nginx/error.html /web/error.html
 COPY --chown=1000:1000 --chmod=555 ./apps/jjgadgets-error-page-ingress-nginx/Caddyfile /Caddyfile
 
