@@ -1,8 +1,14 @@
 :8080 {
+    header -ETag
+    header -Last-Modified
+    header Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+    header Pragma "no-cache"
     root * /web
     rewrite * /error.html
+    encode zstd gzip
     file_server {
         index error.html
+        hide .git
         status {http.request.header.X-Code}
     }
 }
