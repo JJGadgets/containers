@@ -11,7 +11,7 @@ RUN python3 -m venv . && /app/bin/pip install --upgrade --no-cache-dir radicale=
 # above plugin hash is from "3" branch
 
 # Stage 2: Working app image
-FROM gcr.io/distroless/python3-debian12:nonroot@sha256:e35fc9d1378fa456ee8de1ccdfd697382b267609f6f253bddd23170ae5583d71
+FROM gcr.io/distroless/python3-debian12:nonroot@sha256:685a95cc36adb532ff6012dc125744eec4ba8170651a1333baffd9c695d9680c
 USER 1000:1000
 WORKDIR /data
 WORKDIR /config
