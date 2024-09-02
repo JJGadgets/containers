@@ -1,13 +1,11 @@
 FROM public.ecr.aws/docker/library/alpine:3.19.1
 
 USER 0:0
-RUN apk add bash=5.2.21-r0
-RUN apk add catatonit=0.2.0-r0
-RUN apk add kubectl=1.28.4-r0
-RUN apk add python3=3.11.6-r1
-RUN apk add py3-yaml=6.0.1-r1
-#RUN apk add py3-pip=23.3.1-r0
-#RUN pip3 install pyyaml
+RUN apk add bash
+RUN apk add catatonit
+RUN apk add kubectl
+RUN apk add python3
+RUN apk add py3-yaml
 
 USER 1000:1000
 WORKDIR /app
