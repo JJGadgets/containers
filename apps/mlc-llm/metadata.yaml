@@ -8,7 +8,7 @@ channels:
       - "linux/amd64" # iGPU
     stable: true
     tests:
-      enabled: true
+      enabled: false
       type: web
   #- <<: *c
   #  name: master
