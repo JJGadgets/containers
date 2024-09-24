@@ -5,5 +5,7 @@ RUN apt update && apt install -y mesa-va-drivers mesa-vulkan-drivers && apt clea
 
 USER 1000:1000
 WORKDIR /app
-ENTRYPOINT ["/catatonit", "--", "/app/bin/mlc_llm", "serve", "--host", "", "--port", "8080"]
+ENV VIRTUAL_ENV=/app
+ENV PATH="/app/bin:$PATH"
+ENTRYPOINT ["/app/bin/tini", "-g", "--", "/app/bin/mlc_llm", "serve", "--host", "", "--port", "8080"]
 # CMD (or `args` on K8s) used to specify model and additional args
