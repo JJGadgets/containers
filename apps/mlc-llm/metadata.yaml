@@ -1,0 +1,15 @@
+---
+app: mlc-llm
+base: false
+channels:
+  - &c
+    name: stable
+    platforms:
+      - "linux/amd64" # iGPU
+    stable: true
+    tests:
+      enabled: true
+      type: web
+  #- <<: *c
+  #  name: master
+  #  stable: false
