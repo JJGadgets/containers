@@ -8,6 +8,7 @@ RUN conda install --yes --freeze-installed -p /app -c conda-forge gcc libvulkan-
 RUN apt update && apt install -y mesa-va-drivers mesa-vulkan-drivers && apt clean && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/
 
 USER 1000:1000
+WORKDIR /app
 ENV VIRTUAL_ENV="/app"
 ENV PATH="/app/bin:$PATH"
 ENV PWD="/app"
