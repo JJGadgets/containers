@@ -4,6 +4,7 @@ ARG VERSION
 # Stage 1 (Build): Build Caddy with xcaddy builder image
 FROM public.ecr.aws/docker/library/caddy:${VERSION}-builder AS builder
 RUN xcaddy build
+RUN setcap -r /usr/bin/caddy
 
 # Stage 2 (App): Use Google's distroless Debian 12 static non-root image as base image for actual app image, and copy compiled Caddy binary
 FROM gcr.io/distroless/static-debian12:nonroot@sha256:dcd3f1f09adef5689088c9c4d96a8d98c889d8281d3946145074f89eafe7e1af
