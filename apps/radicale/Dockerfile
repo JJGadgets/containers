@@ -15,7 +15,7 @@ FROM docker.io/library/alpine:3.20.1 AS jj
 RUN busybox wget -O- https://github.com/martinvonz/jj/releases/download/v0.19.0/jj-v0.19.0-x86_64-unknown-linux-musl.tar.gz | busybox tar -xvf -
 
 # Stage 3: Working app image
-FROM gcr.io/distroless/python3-debian12:nonroot@sha256:10998541893f872cc9c9c4ed4cb2c1446f47e02221c4448a865e8ab24c55f7c2
+FROM gcr.io/distroless/python3-debian12:nonroot@sha256:e575731d90afa06f113d94beedb526f56c9a7cb38612c608ff211bb8efc09572
 USER 1000:1000
 WORKDIR /data
 WORKDIR /config
