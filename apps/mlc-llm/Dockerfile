@@ -1,9 +1,10 @@
 FROM ghcr.io/astral-sh/uv:0.4.16-bookworm-slim
 WORKDIR /app
 ENV VIRTUAL_ENV="/app"
-ENV PATH="/app/bin:$PATH"
+ENV PATH="/python/bin:/app/bin:$PATH"
 ENV UV_CACHE_DIR="/var/cache/uv"
 ENV UV_LINK_MODE="copy"
+ENV UV_PYTHON_INSTALL_DIR="/python/bin"
 RUN \
 --mount=type=cache,target=/var/cache/uv \
 --mount=type=cache,target=/var/cache/apt,sharing=locked \
@@ -16,7 +17,7 @@ rm -rf /tmp/* /var/tmp/
 USER 1000:1000
 WORKDIR /data
 ENV VIRTUAL_ENV="/app"
-ENV PATH="/app/bin:$PATH"
+ENV PATH="/python/bin:/app/bin:$PATH"
 ENV PWD="/data"
 ENV HOME="/data"
 VOLUME ["/data"]
