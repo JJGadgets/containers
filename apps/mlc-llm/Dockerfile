@@ -1,4 +1,4 @@
-FROM ghcr.io/astral-sh/uv:0.4.16-bookworm-slim
+FROM ghcr.io/astral-sh/uv:0.4.17-bookworm-slim
 WORKDIR /app
 ENV VIRTUAL_ENV="/app"
 ENV PATH="/python/bin:/app/bin:$PATH"
