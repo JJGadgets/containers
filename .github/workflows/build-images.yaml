@@ -193,6 +193,10 @@ jobs:
             PKGVER=${{ matrix.image.pkgver }}
             REVISION=${{ github.sha }}
             CHANNEL=${{ matrix.image.channel }}
+            BUILDKIT_SBOM_SCAN_CONTEXT=true
+            BUILDKIT_SBOM_SCAN_STAGE=true
+          sbom: true
+          provenance: mode=max
           context: . # TODO: Use ${{ matrix.image.context }}, requires updates to all dockerfiles :-(
           platforms: ${{ matrix.image.platform }}
           file: ${{ matrix.image.dockerfile }}
