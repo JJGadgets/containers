@@ -7,7 +7,7 @@ RUN conda init && conda create --yes --copy -p /app python=3.11 && conda install
 RUN conda install --yes --freeze-installed -p /app -c conda-forge gcc libvulkan-loader && conda clean -afy && rm -rf /tmp/*
 # TODO: optimize above install command
 ARG VERSION
-RUN bash -c '[[ "${VERSION}" == "$(date +%Y.%m.%d)" ]] && export PACKAGES_TO_INSTALL="mlc-llm-nightly-cpu mlc-ai-nightly-cpu" || [[ "${VERSION}" != "$(date +%Y.%m.%d)" ]] && export PACKAGES_TO_INSTALL="mlc-llm-cpu>=${VERSION:=0.0.0} mlc-ai-cpu>=${VERSION:=0.0.0}"; \
+RUN VERSION=${VERSION} bash -c '[[ "${VERSION}" == "$(date +%Y.%m.%d)" ]] && export PACKAGES_TO_INSTALL="mlc-llm-nightly-cpu mlc-ai-nightly-cpu" || [[ "${VERSION}" != "$(date +%Y.%m.%d)" ]] && export PACKAGES_TO_INSTALL="mlc-llm-cpu>=${VERSION:=0.0.0} mlc-ai-cpu>=${VERSION:=0.0.0}"; \
 conda run -p /app python -m pip install --no-cache-dir --pre -U -vv --force-reinstall -f https://mlc.ai/wheels ${PACKAGES_TO_INSTALL} && \
 conda clean -afy && rm -rf /tmp/*'
 RUN apt update && apt install -y mesa-va-drivers mesa-vulkan-drivers vulkan-tools && apt clean && rm -rf /tmp/* /var/lib/apt/lists/* /var/cache /var/tmp/
