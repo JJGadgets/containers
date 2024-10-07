@@ -9,7 +9,7 @@ channels:
     stable: true
     tests:
       enabled: false
-      type: web
-  #- <<: *c
-  #  name: master
-  #  stable: false
+      #type: web
+  - <<: *c
+    name: nightly
+    stable: false
