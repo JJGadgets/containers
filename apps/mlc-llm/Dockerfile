@@ -13,24 +13,34 @@ ARG CHANNEL
 RUN \
 --mount=type=cache,target=/var/tmp,sharing=locked \
 --mount=type=cache,target=/tmp,sharing=locked \
-if [ "${CHANNEL}" = "nightly" ]; then \
-  export PACKAGES_TO_INSTALL="mlc-llm-nightly-cpu mlc-ai-nightly-cpu"; \
-elif [ "${CHANNEL}" = "stable" ]; then \
-  export PACKAGES_TO_INSTALL="mlc-llm-cpu>=${VERSION:=0.0.0} mlc-ai-cpu>=${VERSION:=0.0.0}"; \
-elif [ "${CHANNEL}" = "cuda-nightly" ]; then \
-  export PACKAGES_TO_INSTALL="mlc-llm-nightly-cu123 mlc-ai-nightly-cu123"; \
-elif [ "${CHANNEL}" = "cuda" ]; then \
-  export PACKAGES_TO_INSTALL="mlc-llm-cu123>=${VERSION:=0.0.0} mlc-ai-cu123>=${VERSION:=0.0.0}"; \
-fi ; \
+case "${CHANNEL}" in \
+  "nightly") export PACKAGES_TO_INSTALL="mlc-llm-nightly-cpu mlc-ai-nightly-cpu" ;; \
+  "stable") export PACKAGES_TO_INSTALL="mlc-llm-cpu>=${VERSION:=0.0.0} mlc-ai-cpu>=${VERSION:=0.0.0}" ;; \
+  "cuda-nightly") export PACKAGES_TO_INSTALL="mlc-llm-nightly-cu123 mlc-ai-nightly-cu123" ;; \
+  "cuda") export PACKAGES_TO_INSTALL="mlc-llm-cu123>=${VERSION:=0.0.0} mlc-ai-cu123>=${VERSION:=0.0.0}" ;; \
+  *) echo 'NO PACKAGES TO INSTALL! Aborting.' && exit 1 ;; \
+esac && \
 conda run -p /app python -m pip install --no-cache-dir --pre -U -vv --force-reinstall -f https://mlc.ai/wheels ${PACKAGES_TO_INSTALL} &&  \
 conda clean -afy
 
+ARG TARGETARCH
 RUN \
 --mount=type=cache,target=/var/cache/apt,sharing=locked \
 --mount=type=cache,target=/var/lib/apt,sharing=locked \
 set -o allexport && . /etc/os-release && set +o allexport && \
-echo "deb http://deb.debian.org/debian ${VERSION_CODENAME}-backports main" >> /etc/apt/sources.list && \
-apt update && apt install -t ${VERSION_CODENAME}-backports -y mesa-vulkan-drivers vulkan-tools && apt clean && rm -rf /tmp/* /var/tmp/
+case "${CHANNEL}" in \
+  cuda*) \
+    apt-key del 7fa2af80 || true; \
+    apt update && apt install --yes --no-install-recommends software-properties-common && apt-add-repository contrib -y && apt purge --yes software-properties-common && \
+    wget "https://developer.download.nvidia.com/compute/cuda/repos/${ID}${VERSION_ID}/${TARGETARCH}/cuda-keyring_1.1-1_all.deb" && apt install cuda-keyring_1.1-1_all.deb || exit 1; \
+    apt update && apt install --yes --no-install-recommends cuda-toolkit \
+  ;; \
+  *) \
+    echo "deb http://deb.debian.org/debian ${VERSION_CODENAME}-backports main" >> /etc/apt/sources.list && \
+    apt update && apt install -t ${VERSION_CODENAME}-backports --yes --no-install-recommends mesa-vulkan-drivers vulkan-tools \
+  ;; \
+esac && \
+apt clean && rm -rf /tmp/* /var/tmp/
 
 USER 1000:1000
 WORKDIR /data
