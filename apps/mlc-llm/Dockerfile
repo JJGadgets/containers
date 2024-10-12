@@ -15,11 +15,11 @@ RUN \
 --mount=type=cache,target=/tmp,sharing=locked \
 if [ "${CHANNEL}" = "nightly" ]; then \
   export PACKAGES_TO_INSTALL="mlc-llm-nightly-cpu mlc-ai-nightly-cpu"; \
-elif [ "${VERSION}" != "stable" ]; then \
+elif [ "${CHANNEL}" = "stable" ]; then \
   export PACKAGES_TO_INSTALL="mlc-llm-cpu>=${VERSION:=0.0.0} mlc-ai-cpu>=${VERSION:=0.0.0}"; \
 elif [ "${CHANNEL}" = "cuda-nightly" ]; then \
   export PACKAGES_TO_INSTALL="mlc-llm-nightly-cu123 mlc-ai-nightly-cu123"; \
-elif [ "${VERSION}" != "cuda" ]; then \
+elif [ "${CHANNEL}" = "cuda" ]; then \
   export PACKAGES_TO_INSTALL="mlc-llm-cu123>=${VERSION:=0.0.0} mlc-ai-cu123>=${VERSION:=0.0.0}"; \
 fi ; \
 conda run -p /app python -m pip install --no-cache-dir --pre -U -vv --force-reinstall -f https://mlc.ai/wheels ${PACKAGES_TO_INSTALL} && \
