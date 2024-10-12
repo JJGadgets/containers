@@ -22,7 +22,7 @@ elif [ "${CHANNEL}" = "cuda-nightly" ]; then \
 elif [ "${CHANNEL}" = "cuda" ]; then \
   export PACKAGES_TO_INSTALL="mlc-llm-cu123>=${VERSION:=0.0.0} mlc-ai-cu123>=${VERSION:=0.0.0}"; \
 fi ; \
-conda run -p /app python -m pip install --no-cache-dir --pre -U -vv --force-reinstall -f https://mlc.ai/wheels ${PACKAGES_TO_INSTALL} && \
+conda run -p /app python -m pip install --no-cache-dir --pre -U -vv --force-reinstall -f https://mlc.ai/wheels ${PACKAGES_TO_INSTALL} &&  \
 conda clean -afy
 
 RUN \
