@@ -17,7 +17,7 @@ if [ "${CHANNEL}" = "nightly" ]; then \
   export PACKAGES_TO_INSTALL="mlc-llm-nightly-cpu mlc-ai-nightly-cpu"; \
 elif [ "${VERSION}" != "stable" ]; then \
   export PACKAGES_TO_INSTALL="mlc-llm-cpu>=${VERSION:=0.0.0} mlc-ai-cpu>=${VERSION:=0.0.0}"; \
-if [ "${CHANNEL}" = "cuda-nightly" ]; then \
+elif [ "${CHANNEL}" = "cuda-nightly" ]; then \
   export PACKAGES_TO_INSTALL="mlc-llm-nightly-cu123 mlc-ai-nightly-cu123"; \
 elif [ "${VERSION}" != "cuda" ]; then \
   export PACKAGES_TO_INSTALL="mlc-llm-cu123>=${VERSION:=0.0.0} mlc-ai-cu123>=${VERSION:=0.0.0}"; \
