@@ -15,6 +15,7 @@ channels:
     stable: false
   - <<: *c
     name: cuda
+    stable: false
   - <<: *c
     name: cuda-nightly
     stable: false
