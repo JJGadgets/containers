@@ -33,7 +33,7 @@ case "${CHANNEL}" in \
     apt-key del 7fa2af80 || true; \
     apt update && apt install --yes --no-install-recommends software-properties-common && apt-add-repository contrib -y && apt purge --yes software-properties-common && \
     wget "https://developer.download.nvidia.com/compute/cuda/repos/${ID}${VERSION_ID}/$(uname -m)/cuda-keyring_1.1-1_all.deb" && apt install ./cuda-keyring_1.1-1_all.deb || exit 1; rm -rf ./cuda-keyring_1.1-1_all.deb \
-    apt update && apt install --yes --no-install-recommends cuda-toolkit \
+    apt update && apt install --yes --no-install-recommends cuda-toolkit && apt clean \
   ;; \
   *) \
     echo "deb http://deb.debian.org/debian ${VERSION_CODENAME}-backports main" >> /etc/apt/sources.list && \
