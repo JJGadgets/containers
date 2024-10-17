@@ -24,6 +24,13 @@ conda run -p /app python -m pip install --no-cache-dir --pre -U -vv --force-rein
 conda install --yes --freeze-installed -p /app ${CONDA_TO_INSTALL} && \
 conda clean -afy
 
+# Phi 3.5 Vision
+RUN \
+--mount=type=cache,target=/var/tmp,sharing=locked \
+--mount=type=cache,target=/tmp,sharing=locked \
+conda run -p /app python -m pip install --no-cache-dir --pre -U -vv --force-reinstall Pillow && \
+conda clean -afy
+
 ARG TARGETARCH
 RUN \
 --mount=type=cache,target=/var/cache/apt,sharing=locked \
