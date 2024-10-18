@@ -6,7 +6,7 @@ ARG VERSION
 FROM docker.io/superseriousbusiness/gotosocial:${VERSION} AS upstream
 
 # Stage 2: Working app image
-FROM gcr.io/distroless/static-debian12:nonroot@sha256:dcd3f1f09adef5689088c9c4d96a8d98c889d8281d3946145074f89eafe7e1af
+FROM gcr.io/distroless/static-debian12:nonroot@sha256:26f9b99f2463f55f20db19feb4d96eb88b056e0f1be7016bb9296a464a89d772
 WORKDIR /gotosocial
 COPY --chown=1000:1000 --from=upstream /gotosocial /gotosocial
 
