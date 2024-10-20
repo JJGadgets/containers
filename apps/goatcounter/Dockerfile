@@ -23,4 +23,4 @@ VOLUME ["/data", "/tmp"]
 ENV TMPDIR=/tmp
 WORKDIR /data
 ENTRYPOINT ["/catatonit", "--", "/app/goatcounter"]
-CMD ["serve", "-automigrate", "-listen=:8080", "-tls=proxy", "-db=sqlite+file:/data/db/goatcounter.sqlite3", "-smtp=stdout", "-email-from=goatcounter@localhost"]
+CMD ["serve", "-automigrate", "-listen=:8080", "-tls=proxy", "-db=sqlite+/data/db/goatcounter.sqlite3", "-smtp=stdout", "-email-from=goatcounter@localhost"]
