@@ -1,6 +1,6 @@
 ARG VERSION
 
-FROM public.ecr.aws/docker/library/alpine:3.20
+FROM public.ecr.aws/docker/library/alpine:3.21
 ARG VERSION
 RUN apk add bird=${VERSION}
 RUN apk add catatonit
