@@ -1,7 +1,7 @@
 # Define build-time variables
 ARG VERSION
 
-FROM docker.io/library/node:lts-alpine AS base
+FROM docker.io/library/node:lts-alpine@sha256:f2dc6eea95f787e25f173ba9904c9d0647ab2506178c7b5b7c5a3d02bc4af145 AS base
 # Stage 1: clone Elk repo
 FROM base AS git
 RUN apk update
