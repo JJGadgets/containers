@@ -5,7 +5,7 @@ RUN apt-get update && \
 USER 1000:1000
 WORKDIR /app
 RUN python3 -m venv /app && \
-    /app/bin/pip install --upgrade pip setuptools wheel
+    /app/bin/pip install --upgrade pip setuptools wheel requests typing
 
 FROM gcr.io/distroless/python3-debian12:nonroot@sha256:e575731d90afa06f113d94beedb526f56c9a7cb38612c608ff211bb8efc09572
 
@@ -15,7 +15,7 @@ WORKDIR /app
 
 ENV VIRTUAL_ENV=/app
 ENV PATH="/app/bin:$PATH"
-RUN /app/bin/pip install --no-cache-dir --upgrade requests typing
+# RUN /app/bin/pip install --no-cache-dir --upgrade requests typing
 COPY --chmod=555 --chown=1000:1000 ./apps/fortigate-dhcp-dns-sync/fortigate-dhcp-dns-sync.py /app/fortigate-dhcp-dns-sync.py
 
 ENTRYPOINT ["/app/bin/python3", "/app/fortigate-dhcp-dns-sync.py"]
