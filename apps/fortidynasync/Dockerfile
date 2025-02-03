@@ -8,9 +8,9 @@ ENV UV_COMPILE_BYTECODE=1
 ENV UV_PYTHON_INSTALL_DIR=/install
 RUN uv venv /app
 ARG VERSION
-ADD git@github.com:JJGadgets/FortiDynaSync#${VERSION}:uv.lock /app/uv.lock
+ADD https://github.com/JJGadgets/FortiDynaSync.git#${VERSION}:uv.lock /app/uv.lock
 RUN uv sync --frozen --no-install-project
-ADD git@github.com:JJGadgets/FortiDynaSync#${VERSION} /app
+ADD https://github.com/JJGadgets/FortiDynaSync.git#${VERSION} /app
 RUN uv sync --frozen
 
 FROM gcr.io/distroless/static-debian12:nonroot
