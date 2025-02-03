@@ -1,5 +1,5 @@
 ---
-app: fortigate-dhcp-dns-sync
+app: fortidynasync
 base: false
 channels:
   - &c
