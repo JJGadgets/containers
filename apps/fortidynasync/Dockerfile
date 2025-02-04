@@ -8,7 +8,7 @@ USER 1000:1000
 WORKDIR /app
 ENV UV_NO_CACHE=true
 ENV UV_LINK_MODE=copy
-ENV UV_COMPILE_BYTECODE=1
+ENV UV_COMPILE_BYTECODE=0
 ENV UV_PYTHON_INSTALL_DIR=/app/python-install
 COPY --from=git --chown=1000:1000 /git/.python-version /git/pyproject.toml /git/uv.lock /app/
 RUN uv venv
