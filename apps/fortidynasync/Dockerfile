@@ -15,7 +15,7 @@ COPY --from=git --chown=1000:1000 /git/.python-version /git/pyproject.toml /git/
 RUN uv venv
 RUN uv sync --frozen --no-install-project --no-editable
 COPY --from=git --chown=1000:1000 /git /app
-RUN uv sync --frozen --no-editable
+RUN uv sync --frozen --no-editable && ls -AlhR /app
 
 FROM gcr.io/distroless/cc-debian12:nonroot
 USER 1000:1000
@@ -28,4 +28,4 @@ ENV PATH="/app/.venv/bin:$PATH"
 ENTRYPOINT ["/app/.venv/bin/python3", "/app/fortidynasync.py"]
 
 # Renovate changelogs
-LABEL org.opencontainers.image.source="https://github.com/JJGadgets/fortidynasync"
+LABEL org.opencontainers.image.source="https://github.com/JJGadgets/FortiDynaSync"
