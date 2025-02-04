@@ -7,14 +7,15 @@ FROM ghcr.io/astral-sh/uv:0.5.26-debian-slim AS build
 USER 1000:1000
 WORKDIR /app
 ENV UV_NO_CACHE=true
-ENV UV_LINK_MODE=copy
-ENV UV_COMPILE_BYTECODE=0
+# ENV UV_LINK_MODE=copy
+ENV UV_COMPILE_BYTECODE=1
+ENV UV_NO_INSTALLER_METADATA=1
 ENV UV_PYTHON_INSTALL_DIR=/app/python-install
 COPY --from=git --chown=1000:1000 /git/.python-version /git/pyproject.toml /git/uv.lock /app/
 RUN uv venv
-RUN uv sync --frozen --no-install-project
+RUN uv sync --frozen --no-install-project --no-editable
 COPY --from=git --chown=1000:1000 /git /app
-RUN uv sync --frozen
+RUN uv sync --frozen --no-editable
 
 FROM gcr.io/distroless/cc-debian12:nonroot
 USER 1000:1000
