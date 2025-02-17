@@ -1,0 +1,16 @@
+---
+app: fava
+base: false
+channels:
+  - &c
+    name: stable
+    platforms:
+      - "linux/amd64"
+      - "linux/arm64"
+    stable: true
+    tests:
+      enabled: true
+      type: web
+  # - <<: *c
+  #   name: beta
+  #   stable: false
