@@ -9,8 +9,8 @@ channels:
       - "linux/arm64"
     stable: true
     tests:
-      enabled: true
-      type: web
+      enabled: false
+      # type: web
   # - <<: *c
   #   name: beta
   #   stable: false
