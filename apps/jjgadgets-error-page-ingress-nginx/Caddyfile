@@ -3,6 +3,7 @@
     header -Last-Modified
     header Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
     header Pragma "no-cache"
+    reverse_proxy /outpost.goauthentik.io {env.AUTHENTIK_BACKEND}
     root * /web
     rewrite * /error.html
     encode zstd gzip
