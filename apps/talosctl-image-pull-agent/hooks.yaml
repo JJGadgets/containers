@@ -1,0 +1,13 @@
+- id: image-pull
+  execute-command: talosctl
+  pass-arguments-to-command:
+    - name: image
+      source: string
+    - name: pull
+      source: string
+    - name: image
+      source: payload
+    - name: '-n'
+      source: string
+    - name: '{{ getenv "NODE" | js }}'
+      source: string

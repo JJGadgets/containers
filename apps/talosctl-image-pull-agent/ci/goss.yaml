@@ -1,0 +1,6 @@
+---
+# https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#port
+port:
+  # hhttps://github.com/adnanh/webhook/releases/download/latest/webhook-linux-${TARGETARCH}.tar.gzttps://github.com/aelsabbahy/goss/issues/149
+  tcp6:9000:
+    listening: true
