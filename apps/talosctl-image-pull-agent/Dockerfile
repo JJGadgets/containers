@@ -8,7 +8,8 @@ RUN tar -xvf /webhook.tar.gz
 # Stage 2: Working app image
 # FROM gcr.io/distroless/static-debian12:nonroot@sha256:dcd3f1f09adef5689088c9c4d96a8d98c889d8281d3946145074f89eafe7e1af
 ARG VERSION
-FROM ghcr.io/siderolabs/talosctl:v${VERSION}
+ARG TALOSVER=v${VERSION}
+FROM ghcr.io/siderolabs/talosctl:${TALOSVER}
 WORKDIR /app
 
 ADD --chmod=555 --chown=nobody:nogroup --checksum=sha256:af8a43230338de67563878a25872ee2fd3d6af0f3513d55dd1ec672ad69dae53 https://github.com/openSUSE/catatonit/releases/download/v0.2.0/catatonit.x86_64 /catatonit
