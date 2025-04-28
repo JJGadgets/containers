@@ -2,10 +2,11 @@ ARG VERSION
 
 # Stage 1: Install webhook
 FROM public.ecr.aws/docker/library/alpine:3.19.0 AS builder
+WORKDIR /
 ARG TARGETARCH
 
 ADD https://github.com/adnanh/webhook/releases/latest/download/webhook-linux-${TARGETARCH}.tar.gz /webhook.tar.gz
-RUN tar -xvf /webhook.tar.gz
+RUN tar -xvf /webhook.tar.gz && mv /webhook-linux-${TARGETARCH}/webhook /webhook
 
 # Stage 2: Working app image
 # FROM gcr.io/distroless/static-debian12:nonroot@sha256:dcd3f1f09adef5689088c9c4d96a8d98c889d8281d3946145074f89eafe7e1af
