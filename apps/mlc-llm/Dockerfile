@@ -1,4 +1,4 @@
-FROM docker.io/continuumio/miniconda3:24.7.1-0@sha256:f37f8c7db26ae7ec0098df530e96c9cde139026b9faf3914800d1522c47a49b1
+FROM docker.io/continuumio/miniconda3:25.1.1-0@sha256:2b267ca91c8382012d46a9c877e4ee33e0a33bba4b598909c7b81b71f9cda721
 USER 1000:1000
 WORKDIR /app
 
