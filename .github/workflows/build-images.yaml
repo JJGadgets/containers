@@ -270,8 +270,10 @@ jobs:
           echo "LOWERCASE_REPO_OWNER=${GITHUB_REPOSITORY_OWNER,,}" >> "${GITHUB_ENV}"
           echo "CURRENTPLATFORM=${{ matrix.platform.platform }}" | sed -e 's/\//-/g' >> "${GITHUB_ENV}"
 
-      - name: Download Digests
+      - name: Download Digests (${{ matrix.platform.platform }})
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        env:
+          CURRENTPLATFORMGHA: "${{ matrix.platform.platform }}"
         with:
           name: ${{ matrix.image.name }}-${{ env.CURRENTPLATFORM }}
           path: /tmp/${{ matrix.image.name }}
