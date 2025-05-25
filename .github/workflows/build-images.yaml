@@ -98,9 +98,9 @@ jobs:
       fail-fast: false
       matrix:
         image: ["${{ fromJSON(needs.prepare.outputs.matrices).imagePlatforms }}"]
-    concurrency:
-      group: "${{ matrix.image.name }}"
-      cancel-in-progress: false
+    # concurrency:
+    #   group: "${{ matrix.image.name }}"
+    #   cancel-in-progress: false
     steps:
       - name: Lowercase repository owner
         shell: bash
@@ -245,7 +245,7 @@ jobs:
         if: ${{ inputs.pushImages }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: ${{ matrix.image.name }}
+          name: ${{ matrix.image.name }}-${{ matrix.image.platform }}
           path: /tmp/${{ matrix.image.name }}/*
           if-no-files-found: error
           retention-days: 1
@@ -260,6 +260,7 @@ jobs:
     strategy:
       matrix:
         image: ["${{ fromJSON(needs.prepare.outputs.matrices).images }}"]
+        platform: ["${{ fromJSON(needs.prepare.outputs.matrices).imagePlatforms }}"]
       fail-fast: false
     steps:
       - name: Lowercase repository owner
@@ -270,7 +271,7 @@ jobs:
       - name: Download Digests
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         with:
-          name: ${{ matrix.image.name }}
+          name: ${{ matrix.image.name }}-${{ matrix.platform.platform }}
           path: /tmp/${{ matrix.image.name }}
 
       - name: Ensure all platforms were built
