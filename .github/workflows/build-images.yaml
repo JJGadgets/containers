@@ -261,7 +261,6 @@ jobs:
     strategy:
       matrix:
         image: ["${{ fromJSON(needs.prepare.outputs.matrices).images }}"]
-        platform: ["${{ fromJSON(needs.prepare.outputs.matrices).imagePlatforms }}"]
       fail-fast: false
     steps:
       - name: Lowercase repository owner
