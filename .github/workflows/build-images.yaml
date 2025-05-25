@@ -98,6 +98,9 @@ jobs:
       fail-fast: false
       matrix:
         image: ["${{ fromJSON(needs.prepare.outputs.matrices).imagePlatforms }}"]
+    concurrency:
+      group: "${{ matrix.image.name }}"
+      cancel-in-progress: false
     steps:
       - name: Lowercase repository owner
         shell: bash
@@ -239,7 +242,7 @@ jobs:
           echo "${{ matrix.image.name }}" > "/tmp/${{ matrix.image.name }}/digests/${digest#sha256:}"
 
       - name: Upload Digest
-        if: ${{ inputs.pushImages}}
+        if: ${{ inputs.pushImages }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: ${{ matrix.image.name }}
