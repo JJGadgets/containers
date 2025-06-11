@@ -3,7 +3,7 @@ FROM scratch AS git
 ARG VERSION
 ADD --chown=1000:1000 https://github.com/JJGadgets/FortiDynaSync.git#${VERSION} /git
 
-FROM ghcr.io/astral-sh/uv:0.5.26-debian-slim AS build
+FROM ghcr.io/astral-sh/uv:0.5.26-debian-slim@sha256:5ad2072d1f547eaee5ef5e68666c63198c9153f3d5ad9beef8aa094ba1510030 AS build
 USER 1000:1000
 WORKDIR /app
 ENV UV_NO_CACHE=true
@@ -17,7 +17,7 @@ RUN uv sync --frozen --no-install-project --no-editable
 COPY --from=git --chown=1000:1000 /git /app
 RUN uv sync --frozen --no-editable && ls -AlhR /app
 
-FROM gcr.io/distroless/cc-debian12:nonroot
+FROM gcr.io/distroless/cc-debian12:nonroot@sha256:20111f02d53c645d42d68fc2be1c82f471f3b6377063fada1643ef06182214b9
 USER 1000:1000
 COPY --from=build /app /app
 WORKDIR /app
