@@ -10,7 +10,7 @@ ADD https://github.com/arp242/goatcounter/releases/download/v${VERSION}/goatcoun
 RUN gzip -d /goatcounter.gz
 
 # Stage 2: Working app image
-FROM gcr.io/distroless/static-debian12:nonroot@sha256:dcd3f1f09adef5689088c9c4d96a8d98c889d8281d3946145074f89eafe7e1af
+FROM gcr.io/distroless/static-debian12:nonroot@sha256:627d6c5a23ad24e6bdff827f16c7b60e0289029b0c79e9f7ccd54ae3279fb45f
 ARG VERSION
 WORKDIR /app
 
