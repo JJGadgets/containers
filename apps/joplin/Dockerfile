@@ -1,5 +1,5 @@
 # Stage 1: Define upstream GoToSocial image to copy from
-FROM docker.io/joplin/server:2.14.2-beta AS upstream
+FROM docker.io/joplin/server:2.14.2-beta@sha256:b87564ef34e9ed0513e9b925b617cb8a1371eddfc8476f1fbd3fa85341d51508 AS upstream
 
 # Stage 2: Working app image
 ## check node version from https://github.com/laurent22/joplin/blob/80c2a87da20dbf7a7fc34b451d4234805a3d51a0/Dockerfile.server#L56
