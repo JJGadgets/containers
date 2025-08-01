@@ -8,7 +8,7 @@ ARG VERSION
 RUN python3 -m venv . && /app/bin/pip install --upgrade --no-cache-dir fava[excel]==$VERSION
 
 # Stage 2: Working app image
-FROM gcr.io/distroless/python3-debian12:nonroot@sha256:e575731d90afa06f113d94beedb526f56c9a7cb38612c608ff211bb8efc09572
+FROM gcr.io/distroless/python3-debian12:nonroot@sha256:f0705bdc0d76976fc0a7a1995a4135eb9a3358d021f960dfe1a80bd3a4eade82
 USER 65534:65534
 WORKDIR /data
 
