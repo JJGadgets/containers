@@ -5,13 +5,11 @@
     header Pragma "no-cache"
     reverse_proxy /outpost.goauthentik.io {env.AUTHENTIK_BACKEND}
     @json header Accept *application/json*
-    respond @json {http.request.header.X-Code} {
-      body "{}"
+    respond @json "{}" {http.request.header.X-Code} {
       close
     }
     @plain header Accept *text/plain*
-    respond @plain {http.request.header.X-Code} {
-      body "Not Found - JJGadgets"
+    respond @plain "Not Found - JJGadgets" {http.request.header.X-Code} {
       close
     }
     root * /web
