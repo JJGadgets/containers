@@ -4,6 +4,16 @@
     header Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
     header Pragma "no-cache"
     reverse_proxy /outpost.goauthentik.io {env.AUTHENTIK_BACKEND}
+    @json header Accept *application/json*
+    respond @json {http.request.header.X-Code} {
+      body "{}"
+      close
+    }
+    @plain header Accept *text/plain*
+    respond @plain {http.request.header.X-Code} {
+      body "Not Found - JJGadgets"
+      close
+    }
     root * /web
     rewrite * /error.html
     encode zstd gzip
