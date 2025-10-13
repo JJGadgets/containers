@@ -5,7 +5,7 @@
     header Pragma "no-cache"
     reverse_proxy /outpost.goauthentik.io {env.AUTHENTIK_BACKEND}
     @json header Accept *application/json*
-    respond @json "{}" {http.request.header.X-Code} {
+    respond @json {} {http.request.header.X-Code} {
       close
     }
     @plain header Accept *text/plain*
