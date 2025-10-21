@@ -1,6 +1,6 @@
 
 # Stage 1: install app to venv
-FROM docker.io/library/debian:12.6@sha256:aadf411dc9ed5199bc7dab48b3e6ce18f8bbee4f170127f5ff1b75cd8035eb36 AS builder
+FROM docker.io/library/debian:12.12@sha256:26f2a7cab45014541c65f9d140ccfa6aaefbb49686c6759bea9c6f7f5bb3d72f AS builder
 # Define build-time variables
 ARG VERSION
 USER 0:0
