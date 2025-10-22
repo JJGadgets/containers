@@ -1,0 +1,12 @@
+---
+app: cryptpad-sso
+base: false
+channels:
+  - &c
+    name: stable
+    platforms:
+      - "linux/amd64"
+      - "linux/arm64"
+    stable: true
+    tests:
+      enabled: false
