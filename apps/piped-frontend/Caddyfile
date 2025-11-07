@@ -1,0 +1,21 @@
+{
+  order replace after encode
+}
+
+(frontend) {
+  replace "pipedapi.kavin.rocks" "{env.BACKEND_HOSTNAME}"
+  file_server {
+    status 200
+  }
+}
+
+:8080 {
+  log
+  root * /app
+  header +Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0" # to fix iOS PWA non-2xx status caching
+  import frontend
+  handle_errors {
+    rewrite * /
+    import frontend
+  }
+}
