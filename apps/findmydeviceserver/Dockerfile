@@ -3,7 +3,7 @@ ARG VERSION
 # for GoToSocial, the image we are copying from already has multi-arch support, so no need to specify TARGETPLATFORM or ARCH here
 
 # Stage 1: Build FindMyDeviceServer (pulled from upstream Dockerfile https://gitlab.com/Nulide/findmydeviceserver/-/blob/6bfd5c8ed285474aa225a56da96b51f9d0bddb58/Dockerfile#L1-L16)
-FROM docker.io/library/golang:1.21.6-bookworm AS builder
+FROM docker.io/library/golang:1.21.6-bookworm@sha256:3efef61ff1d99c8a90845100e2a7e934b4a5d11b639075dc605ff53c141044fc AS builder
 ARG VERSION
 
 ADD https://gitlab.com/Nulide/findmydeviceserver/-/archive/${VERSION}/findmydeviceserver-${VERSION}.tar.gz /source.tar.gz
