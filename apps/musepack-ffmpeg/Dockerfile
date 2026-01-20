@@ -3,7 +3,7 @@ FROM docker.io/library/archlinux:base
 
 USER root:root
 RUN --mount=type=cache,sharing=locked,target=/var/cache/pacman \
-    pacman -Syu --noconfirm --needed musepack-tools jellyfin-ffmpeg catatonit
+    pacman -Syu --noconfirm --needed musepack-tools jellyfin-ffmpeg catatonit fish
 
 USER nobody:nogroup
 WORKDIR /
