@@ -11,7 +11,7 @@ RUN python3 -m venv . && /app/bin/pip install --upgrade --no-cache-dir radicale=
 # above plugin hash is from "3" branch
 
 # Stage 2: Install Jujutsu
-FROM docker.io/library/alpine:3.20.1 AS jj
+FROM docker.io/library/alpine:3.23.3@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f659 AS jj
 RUN busybox wget -O- https://github.com/martinvonz/jj/releases/download/v0.19.0/jj-v0.19.0-x86_64-unknown-linux-musl.tar.gz | busybox tar -xvf -
 
 # Stage 3: Working app image
