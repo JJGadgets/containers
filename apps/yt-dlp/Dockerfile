@@ -5,6 +5,7 @@ USER 1000:1000
 WORKDIR /
 ARG VERSION
 ADD --chown=1000:1000 --chmod=555 https://github.com/yt-dlp/yt-dlp/releases/download/${VERSION}/yt-dlp /yt-dlp
+COPY --chown=1000:1000 --chmod=555 ./apps/yt-dlp/apprise /apprise
 
 ENTRYPOINT ["/yt-dlp"]
 
