@@ -2,11 +2,11 @@
 FROM scratch AS git
 USER 1000:1000
 
-WORKDIR /app
+WORKDIR /
 ARG VERSION
-ADD --chown=1000:1000 --chmod=555 https://github.com/yt-dlp/yt-dlp/releases/download/${VERSION}/yt-dlp /app/yt-dlp
+ADD --chown=1000:1000 --chmod=555 https://github.com/yt-dlp/yt-dlp/releases/download/${VERSION}/yt-dlp /yt-dlp
 
-ENTRYPOINT ["/app/yt-dlp"]
+ENTRYPOINT ["/yt-dlp"]
 
 # Renovate changelogs
 LABEL org.opencontainers.image.source="https://github.com/yt-dlp/yt-dlp"
