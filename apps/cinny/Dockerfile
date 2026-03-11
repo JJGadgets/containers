@@ -6,5 +6,5 @@ COPY --from=upstream /app /app
 
 USER nobody:nogroup
 ENTRYPOINT ["/caddy"]
-CMD ["file-server", "--root", "/app", "--listen", ":8080"]
+CMD ["run", "--config", "/Caddyfile"]
 LABEL org.opencontainers.image.source="https://github.com/cheeaun/phanpy"
