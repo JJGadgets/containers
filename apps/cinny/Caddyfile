@@ -1,6 +1,6 @@
-{
-  order replace after encode
-}
+# {
+#   order replace after encode
+# }
 
 (frontend) {
   file_server {
