@@ -1,7 +1,3 @@
-# {
-#   order replace after encode
-# }
-
 (frontend) {
   file_server {
     status 200
