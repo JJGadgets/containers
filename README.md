@@ -101,6 +101,7 @@ Container | Channel | Image | Latest Tags
 [redbot-distroless](https://github.com/JJGadgets//containers/pkgs/container/redbot-distroless) | stable | registry.jjgadgets.tech/jjgadgets/redbot-distroless |![3.5.22](https://img.shields.io/badge/3.5.22-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 [samba-debian](https://github.com/JJGadgets//containers/pkgs/container/samba-debian) | stable | registry.jjgadgets.tech/jjgadgets/samba-debian |![4.17.12](https://img.shields.io/badge/4.17.12-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 [talosctl-image-pull-agent](https://github.com/JJGadgets//containers/pkgs/container/talosctl-image-pull-agent) | stable | registry.jjgadgets.tech/jjgadgets/talosctl-image-pull-agent |![1.12.4](https://img.shields.io/badge/1.12.4-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
+[vaultwarden](https://github.com/JJGadgets//containers/pkgs/container/vaultwarden) | stable | registry.jjgadgets.tech/jjgadgets/vaultwarden |![1.35.4](https://img.shields.io/badge/1.35.4-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 [yt-dlp](https://github.com/JJGadgets//containers/pkgs/container/yt-dlp) | stable | registry.jjgadgets.tech/jjgadgets/yt-dlp |![2026.02.04](https://img.shields.io/badge/2026.02.04-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 
 
