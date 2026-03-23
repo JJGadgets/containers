@@ -1,5 +1,5 @@
 # Stage 1: install app to venv
-FROM docker.io/library/debian:12 AS builder
+FROM docker.io/library/debian:trixie-20260316@sha256:55a15a112b42be10bfc8092fcc40b6748dc236f7ef46a358d9392b339e9d60e8 AS builder
 USER 0:0
 RUN apt update && apt install --yes --no-install-suggests --no-install-recommends python3-venv
 USER 65534:65534
