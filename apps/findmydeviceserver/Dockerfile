@@ -16,7 +16,7 @@ RUN go mod download && go mod verify
 RUN go build -o /fmd cmd/fmdserver.go
 
 # Stage 2: Working app image
-FROM gcr.io/distroless/cc-debian12:nonroot@sha256:6cf8f0fafa8b4b911eefa9be9e2fe40fcf380f56de25d203dd9a3782c255d1f3
+FROM gcr.io/distroless/cc-debian12:nonroot@sha256:7e5b8df2f4d36f5599ef4ab856d7d444922531709becb03f3368c6d797d0a5eb
 # FROM debian:12
 ARG VERSION
 WORKDIR /fmd
