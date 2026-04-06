@@ -1,5 +1,5 @@
 # Stage 1: Build (pulled from upstream Dockerfile https://github.com/botlabs-gg/yagpdb/blob/7e6d553bd203680a0a1d68afd94f815478538611/yagpdb_docker/Dockerfile)
-FROM docker.io/library/archlinux:base
+FROM docker.io/library/archlinux:base@sha256:b4df475619469581537637ceaace6075f4912ea1cd6db6b99d463e3a72969d04
 
 USER root:root
 RUN --mount=type=cache,sharing=locked,target=/var/cache/pacman \
