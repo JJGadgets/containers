@@ -73,6 +73,7 @@ def get_published_version(image_name):
         return None
 
     data = json.loads(r.text)
+    print(data)
     for image in data:
         tags = image["metadata"]["container"]["tags"]
         if "rolling" in tags:
@@ -196,6 +197,7 @@ if __name__ == "__main__":
                 imagesToBuild["imagePlatforms"].extend(imageToBuild["imagePlatforms"])
     else:
         for subdir, dirs, files in os.walk("./apps"):
+            print(subdir)
             for file in files:
                 meta = None
                 if file == "metadata.yaml":
@@ -204,6 +206,7 @@ if __name__ == "__main__":
                     meta = load_metadata_file_json(os.path.join(subdir, file))
                 else:
                     continue
+                print(meta)
                 if meta is not None:
                     print(subdir)
                     imageToBuild = get_image_metadata(subdir, meta, forRelease, force=force)
