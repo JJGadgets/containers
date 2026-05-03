@@ -16,6 +16,9 @@ repo_owner = os.environ.get('REPO_OWNER', os.environ.get('GITHUB_REPOSITORY_OWNE
 
 TESTABLE_PLATFORMS = ["linux/amd64"]
 
+def eprint(*args, **kwargs): # https://stackoverflow.com/a/14981125
+    print(*args, file=sys.stderr, **kwargs)
+
 def load_metadata_file_yaml(file_path):
     with open(file_path, "r") as f:
         return yaml.safe_load(f)
@@ -60,7 +63,7 @@ def get_latest_package_version(subdir, channel_name):
     return None
 
 def get_published_version(image_name):
-    print(image_name)
+    eprint(image_name)
     r = requests.get(
         f"https://api.github.com/users/{repo_owner}/packages/container/{image_name}/versions",
         headers={
@@ -73,7 +76,7 @@ def get_published_version(image_name):
         return None
 
     data = json.loads(r.text)
-    print(data)
+    eprint(data)
     for image in data:
         tags = image["metadata"]["container"]["tags"]
         if "rolling" in tags:
@@ -197,7 +200,7 @@ if __name__ == "__main__":
                 imagesToBuild["imagePlatforms"].extend(imageToBuild["imagePlatforms"])
     else:
         for subdir, dirs, files in os.walk("./apps"):
-            print(subdir)
+            eprint(subdir)
             for file in files:
                 meta = None
                 if file == "metadata.yaml":
@@ -206,9 +209,9 @@ if __name__ == "__main__":
                     meta = load_metadata_file_json(os.path.join(subdir, file))
                 else:
                     continue
-                print(meta)
+                eprint(meta)
                 if meta is not None:
-                    print(subdir)
+                    eprint(subdir)
                     imageToBuild = get_image_metadata(subdir, meta, forRelease, force=force)
                     if imageToBuild is not None:
                         imagesToBuild["images"].extend(imageToBuild["images"])
