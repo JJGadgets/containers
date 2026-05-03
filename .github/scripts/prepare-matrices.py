@@ -60,6 +60,7 @@ def get_latest_package_version(subdir, channel_name):
     return None
 
 def get_published_version(image_name):
+    print(image_name)
     r = requests.get(
         f"https://api.github.com/users/{repo_owner}/packages/container/{image_name}/versions",
         headers={
@@ -204,6 +205,7 @@ if __name__ == "__main__":
                 else:
                     continue
                 if meta is not None:
+                    print(subdir)
                     imageToBuild = get_image_metadata(subdir, meta, forRelease, force=force)
                     if imageToBuild is not None:
                         imagesToBuild["images"].extend(imageToBuild["images"])
