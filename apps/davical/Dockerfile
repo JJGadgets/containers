@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/debian:12.2-slim
+FROM public.ecr.aws/docker/library/debian:13.4-slim@sha256:109e2c65005bf160609e4ba6acf7783752f8502ad218e298253428690b9eaa4b
 ARG VERSION
 USER 0:0
 RUN apt update && apt install -y --no-install-recommends davical=${VERSION} php-ldap php-curl apache2 catatonit && apt clean && rm -rf /var/lib/apt/lists && rm -rf /var/cache /etc/systemd /lib/systemd && cd /etc/apache2/sites-enabled && ln -s ../sites-available/davical.conf ./davical.conf && cd /etc/apache2/mods-enabled && ln -s ../mods-available/headers.load ./headers.load && unlink /etc/apache2/sites-enabled/000-default.conf && echo 'Listen 8080' > /etc/apache2/ports.conf && echo 'ServerName ${APACHE_SERVERNAME}' >> /etc/apache2/apache2.conf
