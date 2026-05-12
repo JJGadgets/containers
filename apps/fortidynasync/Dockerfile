@@ -3,7 +3,7 @@ FROM scratch AS git
 ARG VERSION
 ADD --chown=1000:1000 https://github.com/JJGadgets/FortiDynaSync.git#${VERSION} /git
 
-FROM ghcr.io/astral-sh/uv:0.5.26-debian-slim AS build
+FROM ghcr.io/astral-sh/uv:0.11.14-debian-slim@sha256:2702577da32d9c3d55c8073e07d4476cd7402c085efbf71921104548c851d96a AS build
 USER 1000:1000
 WORKDIR /app
 ENV UV_NO_CACHE=true
