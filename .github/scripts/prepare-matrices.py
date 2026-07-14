@@ -81,8 +81,11 @@ def get_published_version(image_name):
         tags = image["metadata"]["container"]["tags"]
         if "rolling" in tags:
             tags.remove("rolling")
-            # Assume the longest string is the complete version number
-            return max(tags, key=len)
+            if tags:
+              # Assume the longest string is the complete version number
+              return max(tags, key=len)
+            else:
+              return None
 
 def get_image_metadata(subdir, meta, forRelease=False, force=False, channels=None):
     imagesToBuild = {
