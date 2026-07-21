@@ -17,7 +17,7 @@ RUN uv sync --frozen --no-install-project --no-editable
 COPY --from=git --chown=1000:1000 /git /app
 RUN uv sync --frozen --no-editable && ls -AlhR /app
 
-FROM gcr.io/distroless/cc-debian12:nonroot
+FROM gcr.io/distroless/cc-debian12:nonroot@sha256:fccdbb0a547c14e23fcf4ce8ad62ca5d43b4faae8d22cd292f490fef9946c96e
 USER 1000:1000
 COPY --from=build /app /app
 WORKDIR /app
