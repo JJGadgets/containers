@@ -2,7 +2,7 @@ FROM docker.io/library/debian:13.6@sha256:fac46bff2e02f51425b6e33b0e1169f55dfb05
 # Define build-time variables
 USER 0:0
 ENV BUN_RUNTIME_TRANSPILER_CACHE_PATH=0
-RUN apt update && apt install --yes --no-install-suggests --no-install-recommends build-essential procps curl file git gcc && rm -rf /var/lib/apt /var/cache
+RUN apt update && apt install --yes --no-install-suggests --no-install-recommends ca-certificates build-essential procps curl file git gcc && rm -rf /var/lib/apt /var/cache
 RUN useradd --uid 1000 --home-dir /home/openclaw --create-home --user-group openclaw
 
 USER 1000:1000
