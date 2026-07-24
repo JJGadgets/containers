@@ -8,8 +8,8 @@ RUN useradd --uid 1000 --home-dir /home/openclaw --create-home --user-group open
 USER 1000:1000
 WORKDIR /app
 ARG VERSION
-ARG TARGETARCH
-RUN curl -vLo ./app.tar.gz "https://github.com/anomalyco/opencode/releases/download/v${VERSION}/opencode-linux-${TARGETARCH}.tar.gz" && tar -xvf ./app.tar.gz && rm ./app.tar.gz && chmod 555 ./opencode
+# ARG TARGETARCH
+RUN curl -vLo ./app.tar.gz "https://github.com/anomalyco/opencode/releases/download/v${VERSION}/opencode-linux-x64.tar.gz" && tar -xvf ./app.tar.gz && rm ./app.tar.gz && chmod 555 ./opencode
 
 VOLUME ["/home/openclaw"]
 WORKDIR /home/openclaw
