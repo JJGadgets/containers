@@ -77,7 +77,7 @@ Each Image will be built with a `rolling` tag, along with tags specific to it's 
 
 Container | Channel | Image | Latest Tags
 --- | --- | --- | ---
-[bird](https://github.com/JJGadgets//containers/pkgs/container/bird) | stable | registry.jjgadgets.tech/jjgadgets/bird |![2.15.1-r0](https://img.shields.io/badge/2.15.1--r0-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
+[bird]() | stable | registry.jjgadgets.tech/jjgadgets/bird |
 [cinny](https://github.com/JJGadgets//containers/pkgs/container/cinny) | stable | registry.jjgadgets.tech/jjgadgets/cinny |![4.12.6](https://img.shields.io/badge/4.12.6-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 [cryptpad-sso](https://github.com/JJGadgets//containers/pkgs/container/cryptpad-sso) | stable | registry.jjgadgets.tech/jjgadgets/cryptpad-sso |![0.6.0](https://img.shields.io/badge/0.6.0-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 [fava](https://github.com/JJGadgets//containers/pkgs/container/fava) | stable | registry.jjgadgets.tech/jjgadgets/fava |![1.30.16](https://img.shields.io/badge/1.30.16-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
