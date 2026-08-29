@@ -1,7 +1,7 @@
 ARG VERSION
 
 # Stage 1: Install webhook
-FROM public.ecr.aws/docker/library/alpine:3.19.0 AS builder
+FROM public.ecr.aws/docker/library/alpine:3.19.0@sha256:51b67269f354137895d43f3b3d810bfacd3945438e94dc5ac55fdac340352f48 AS builder
 WORKDIR /
 ARG TARGETARCH
 
