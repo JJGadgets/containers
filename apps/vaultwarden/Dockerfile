@@ -1,7 +1,7 @@
 ARG VERSION
 FROM ghcr.io/dani-garcia/vaultwarden:${VERSION} AS upstream
 
-FROM gcr.io/distroless/static-debian13:nonroot@sha256:f512d819b8f109f2375e8b51d8cfd8aafe81034bc3e319740128b7d7f70d5036
+FROM gcr.io/distroless/static-debian13:nonroot@sha256:e2e927ec666bae08560abb3c55d0659eceabb657f56b6782ab500a9fc7f555e3
 USER nobody:nogroup
 WORKDIR /app
 COPY --chown=nobody:nogroup --chmod=444 --from=upstream /web-vault /app/web-vault
