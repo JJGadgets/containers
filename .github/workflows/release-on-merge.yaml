@@ -18,16 +18,16 @@ on:
 
 jobs:
   simple-checks:
-    uses: JJGadgets/containers/.github/workflows/simple-checks.yaml@main
+    uses: JJGadgets/containers/.github/workflows/simple-checks.yaml@83bcd22a75014b8978ad6dc980dfe6d6605b6564 # main
 
   get-changed-images:
     needs: ["simple-checks"]
-    uses: JJGadgets/containers/.github/workflows/get-changed-images.yaml@main
+    uses: JJGadgets/containers/.github/workflows/get-changed-images.yaml@83bcd22a75014b8978ad6dc980dfe6d6605b6564 # main
 
   build-images:
     needs: ["simple-checks", "get-changed-images"]
     if: ${{ needs.get-changed-images.outputs.addedOrModified == 'true' }}
-    uses: JJGadgets/containers/.github/workflows/build-images.yaml@main
+    uses: JJGadgets/containers/.github/workflows/build-images.yaml@83bcd22a75014b8978ad6dc980dfe6d6605b6564 # main
     secrets: inherit
     with:
       appsToBuild: "${{ needs.get-changed-images.outputs.addedOrModifiedImages }}"
@@ -38,5 +38,5 @@ jobs:
     name: Render Readme
     needs: build-images
     if: ${{ always() && needs.build-images.result != 'failure' }}
-    uses: JJGadgets/containers/.github/workflows/render-readme.yaml@main
+    uses: JJGadgets/containers/.github/workflows/render-readme.yaml@83bcd22a75014b8978ad6dc980dfe6d6605b6564 # main
     secrets: inherit
