@@ -2,7 +2,7 @@
 ARG VERSION
 
 # Stage 1: Build (pulled from upstream Dockerfile https://github.com/botlabs-gg/yagpdb/blob/7e6d553bd203680a0a1d68afd94f815478538611/yagpdb_docker/Dockerfile)
-FROM docker.io/library/python:3.11-slim-bookworm
+FROM docker.io/library/python:3.11-slim-bookworm@sha256:2333bd330d12de02514770b3585cad313644316047cdee24a7acfdece6de6efb
 ARG VERSION
 
 # why openjdk? its required for the Audio cog, specifically to run lavalink. We don't need to install lavalink ourselves, due to it automagically being installed by the audio cog
