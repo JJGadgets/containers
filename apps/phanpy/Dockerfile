@@ -4,7 +4,7 @@ USER 1000:1000
 WORKDIR /app
 RUN curl -vL https://github.com/cheeaun/phanpy/releases/download/${VERSION}/phanpy-dist.zip | busybox unzip -
 
-FROM ghcr.io/jjgadgets/caddy-distroless-base:2.7.6@sha256:7a16fbac33728694301f18b5414dd257e9f2902fc0d1d5c8919bf86c73b93570
+FROM ghcr.io/jjgadgets/caddy-distroless-base:2.11.7@sha256:01a81e7625a2ee73af0a3c88da65545dc7ce0037a5a3cad486430584ad1d4ece
 COPY --from=upstream /app /app
 
 USER 1000:1000
