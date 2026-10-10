@@ -24,12 +24,12 @@ on:
 jobs:
   simple-checks:
     name: Simple Checks
-    uses: JJGadgets/containers/.github/workflows/simple-checks.yaml@main
+    uses: JJGadgets/containers/.github/workflows/simple-checks.yaml@4d4f809f289854bcde09fb6c5419b068eb996212 # main
 
   build-images:
     name: Build Images
     needs: simple-checks
-    uses: JJGadgets/containers/.github/workflows/build-images.yaml@main
+    uses: JJGadgets/containers/.github/workflows/build-images.yaml@4d4f809f289854bcde09fb6c5419b068eb996212 # main
     secrets: inherit
     permissions:
       contents: read
@@ -43,5 +43,5 @@ jobs:
   render-readme:
     name: Render Readme
     needs: build-images
-    uses: JJGadgets/containers/.github/workflows/render-readme.yaml@main
+    uses: JJGadgets/containers/.github/workflows/render-readme.yaml@4d4f809f289854bcde09fb6c5419b068eb996212 # main
     secrets: inherit
