@@ -1,4 +1,4 @@
-FROM docker.io/library/debian:13.6@sha256:fac46bff2e02f51425b6e33b0e1169f55dfb053d83511ca28aa50c09fd5ed7a4
+FROM docker.io/library/debian:13.7@sha256:4c25275446ca371766b8b093c696782eabce06263fccacb8d5d813b3dc44b308
 # Define build-time variables
 USER 0:0
 ENV BUN_RUNTIME_TRANSPILER_CACHE_PATH=0
