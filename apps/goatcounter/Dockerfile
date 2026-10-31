@@ -2,7 +2,7 @@
 ARG VERSION
 
 # Stage 1: Build (pulled from upstream Dockerfile https://github.com/botlabs-gg/yagpdb/blob/7e6d553bd203680a0a1d68afd94f815478538611/yagpdb_docker/Dockerfile)
-FROM public.ecr.aws/docker/library/alpine:3.19.0 AS builder
+FROM public.ecr.aws/docker/library/alpine:3.24.3@sha256:be2656061b536c1883c4034790e21d0a09c5aaaf51968b89368a3c0371ea2c9a AS builder
 ARG VERSION
 ARG TARGETARCH
 
