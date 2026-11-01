@@ -1,0 +1,29 @@
+---
+ mpc2sv8/Makefile.am |    5 +++--
+ mpcdec/Makefile.am  |    5 +++--
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+--- libmpc.orig/mpc2sv8/Makefile.am
++++ libmpc/mpc2sv8/Makefile.am
+@@ -11,6 +11,7 @@ common_sources = ../common/crc32.c
+ METASOURCES = AUTO
+ bin_PROGRAMS = mpc2sv8
+ mpc2sv8_SOURCES = mpc2sv8.c $(common_sources)
+-mpc2sv8_LDADD = -lm \
++mpc2sv8_LDADD = \
+ 	$(top_builddir)/libmpcdec/libmpcdec.la \
+-	$(top_builddir)/libmpcenc/libmpcenc.a
++	$(top_builddir)/libmpcenc/libmpcenc.a \
++	-lm
+--- libmpc.orig/mpcdec/Makefile.am
++++ libmpc/mpcdec/Makefile.am
+@@ -9,7 +9,8 @@
+ endif
+ METASOURCES = AUTO
+ bin_PROGRAMS = mpcdec
+ mpcdec_SOURCES = mpcdec.c
+-mpcdec_LDADD = -lm \
++mpcdec_LDADD = \
+ 	$(top_builddir)/libmpcdec/libmpcdec.la \
+-	$(top_builddir)/libwavformat/libwavformat.a
++	$(top_builddir)/libwavformat/libwavformat.a \
++	-lm

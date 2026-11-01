@@ -1,0 +1,12 @@
+Index: libmpc/configure.in
+===================================================================
+--- libmpc.orig/configure.in
++++ libmpc/configure.in
+@@ -37,6 +37,6 @@
+ AM_CONDITIONAL([MPC_CHAP], [test "x$enable_mpcchap" = xyes])
+ 
+ 
+-CHECK_VISIBILITY
++AM_CONDITIONAL([HAVE_VISIBILITY], [true])
+ 
+ AC_CONFIG_FILES([

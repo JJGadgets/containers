@@ -1,0 +1,9 @@
+--- a/mpcenc/Makefile.am
++++ b/mpcenc/Makefile.am
+@@ -25,1 +25,1 @@
+-mpcenc_LDADD = -lm \
++mpcenc_LDADD = \
+@@ -28,1 +28,2 @@
+-        $(top_builddir)/libmpcenc/libmpcenc.a
++        $(top_builddir)/libmpcenc/libmpcenc.a \
++        -lm

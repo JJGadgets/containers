@@ -1,0 +1,23 @@
+# musl compatibility based on the former Buildroot Musepack patch set:
+# - fpu_control.h is a glibc-only header, and Musepack already guards its use
+#   of the associated macros;
+# - fd_set/select declarations should be included from sys/select.h explicitly.
+--- a/mpcenc/mpcenc.h
++++ b/mpcenc/mpcenc.h
+@@ -34,6 +34,7 @@
+ //// portable system includes //////////////////////////////////////
+ #include <stddef.h>
+ #include <math.h>
++#include <sys/select.h>
+ 
+ //// system dependent system includes //////////////////////////////
+ // low level I/O, where are prototypes and constants?
+@@ -50,7 +51,7 @@
+ # include <unistd.h>
+ #endif
+ 
+-#if   defined __linux__
++#if   defined __GLIBC__
+ #  include <fpu_control.h>
+ #elif defined __FreeBSD__
+ # include <machine/floatingpoint.h>

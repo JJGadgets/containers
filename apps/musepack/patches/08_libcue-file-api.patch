@@ -1,0 +1,24 @@
+# libcue 2.3.0 exposes cue_parse_file(FILE *), unlike the older cuefile API
+# that accepted a filename. Open the CUE sheet explicitly and close it after parsing.
+--- a/mpcchap/mpcchap.c
++++ b/mpcchap/mpcchap.c
+@@ -4,10 +4,18 @@
+ 	int nchap;
+     struct stat stbuf;
+     FILE * in_file;
++    FILE *cue_in_file;
+     int chap_pos, end_pos, chap_size, i;
+     char * tmp_buff;
+ 
+-	if (0 == (cd = cue_parse_file(chap_file))) {
++	cue_in_file = fopen(chap_file, "r");
++	if (NULL == cue_in_file) {
++	    fprintf(stderr, "%s: input file error\n", chap_file);
++	    return !MPC_STATUS_OK;
++	}
++	cd = cue_parse_file(cue_in_file);
++	fclose(cue_in_file);
++	if (NULL == cd) {
+         fprintf(stderr, "%s: input file error\n", chap_file);
+         return !MPC_STATUS_OK;
+     }

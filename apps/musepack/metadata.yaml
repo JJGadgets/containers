@@ -1,5 +1,5 @@
 ---
-app: musepack-ffmpeg
+app: musepack
 base: false
 channels:
   - &c
