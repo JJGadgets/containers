@@ -199,6 +199,7 @@ jobs:
             CHANNEL=${{ matrix.image.channel }}
             BUILDKIT_SBOM_SCAN_CONTEXT=true
             BUILDKIT_SBOM_SCAN_STAGE=true
+            CONTEXT=${{ matrix.image.context }}
           sbom: true
           provenance: mode=max
           context: . # TODO: Use ${{ matrix.image.context }}, requires updates to all dockerfiles :-(

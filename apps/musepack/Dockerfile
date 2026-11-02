@@ -3,6 +3,8 @@
 # The single final scratch image includes binaries under /usr/local/bin and license notices.
 ARG ALPINE_VERSION=3.23
 
+ARG CONTEXT=.
+
 FROM alpine:${ALPINE_VERSION} AS build
 
 RUN apk add --no-cache \
@@ -74,7 +76,8 @@ RUN set -eux; \
     test -f "${DEPS_PREFIX}/lib/libreplaygain.a"
 
 # Apply the Arch Linux package's compatibility patches before regenerating Autotools.
-COPY patches/ /patches/
+ARG CONTEXT=.
+COPY ${CONTEXT}/patches/ /patches/
 RUN set -eux; \
     cd /src/musepack; \
     for p in \
