@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.7
 # Build fully static Musepack SV8 CLI binaries (musl libc) for the target Linux architecture.
 # The single final scratch image includes binaries under /usr/local/bin and license notices.
-ARG ALPINE_VERSION=3.23
+ARG ALPINE_VERSION=3.23@sha256:f3d55900449227ae9e237ede521e7b665d53a253b42065ba90b9db9275e198ad
 
 ARG CONTEXT=.
 
