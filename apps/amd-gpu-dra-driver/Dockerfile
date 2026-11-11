@@ -5,8 +5,8 @@
 # Patch: https://github.com/ROCm/k8s-gpu-dra-driver/commit/ad96ab70d80a3cf93a00e71f11a6e59d526c6ddc
 # Reproducible source: v1.0.1 tag must resolve to the audited commit below.
 FROM scratch AS source
-ADD --checksum=9eb4e2ea386e34581524b0110e24769654fcb8d2 \
-    https://github.com/ROCm/k8s-gpu-dra-driver.git#v1.0.1 /src
+ARG VERSION
+ADD https://github.com/ROCm/k8s-gpu-dra-driver.git#${VERSION} /src
 
 # Go 1.26.11 includes security fixes beyond the upstream 1.26.5 toolchain.
 # Pin the multi-platform index digest for amd64/arm64 builds.
@@ -122,7 +122,6 @@ ENTRYPOINT ["/usr/bin/gpu-kubeletplugin"]
 LABEL org.opencontainers.image.title="AMD GPU DRA driver (v1.0.1 + PR #117)" \
       org.opencontainers.image.source="https://github.com/ROCm/k8s-gpu-dra-driver" \
       org.opencontainers.image.version="v1.0.1-pr117" \
-      org.opencontainers.image.revision="9eb4e2ea386e34581524b0110e24769654fcb8d2" \
       org.opencontainers.image.licenses="Apache-2.0" \
       org.opencontainers.image.description="AMD GPU DRA v1.0.1 with mixed-vendor driver-version fix (upstream PR #117)"
 
