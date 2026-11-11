@@ -6,7 +6,7 @@
 # Reproducible source: v1.0.1 tag must resolve to the audited commit below.
 FROM scratch AS source
 ARG VERSION
-ADD https://github.com/ROCm/k8s-gpu-dra-driver.git#${VERSION} /src
+ADD https://github.com/ROCm/k8s-gpu-dra-driver.git#v${VERSION} /src
 
 # Go 1.26.11 includes security fixes beyond the upstream 1.26.5 toolchain.
 # Pin the multi-platform index digest for amd64/arm64 builds.
