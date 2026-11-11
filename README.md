@@ -77,6 +77,7 @@ Each Image will be built with a `rolling` tag, along with tags specific to it's 
 
 Container | Channel | Image | Latest Tags
 --- | --- | --- | ---
+[amd-gpu-dra-driver](https://github.com/JJGadgets//containers/pkgs/container/amd-gpu-dra-driver) | stable | registry.jjgadgets.tech/jjgadgets/amd-gpu-dra-driver |![1.0.1](https://img.shields.io/badge/1.0.1-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 [bird](https://github.com/JJGadgets//containers/pkgs/container/bird) | stable | registry.jjgadgets.tech/jjgadgets/bird |![2.15.1-r0](https://img.shields.io/badge/2.15.1--r0-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 [cinny](https://github.com/JJGadgets//containers/pkgs/container/cinny) | stable | registry.jjgadgets.tech/jjgadgets/cinny |![4.12.8](https://img.shields.io/badge/4.12.8-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
 [cryptpad-sso](https://github.com/JJGadgets//containers/pkgs/container/cryptpad-sso) | stable | registry.jjgadgets.tech/jjgadgets/cryptpad-sso |![1.0.0](https://img.shields.io/badge/1.0.0-blue?style=flat-square) ![rolling](https://img.shields.io/badge/rolling-blue?style=flat-square)
