@@ -10,7 +10,7 @@ ADD https://github.com/ROCm/k8s-gpu-dra-driver.git#v${VERSION} /src
 
 # Go 1.26.11 includes security fixes beyond the upstream 1.26.5 toolchain.
 # Pin the multi-platform index digest for amd64/arm64 builds.
-FROM --platform=$BUILDPLATFORM docker.io/library/golang:1.26.11-bookworm@sha256:dc40a13b61304647ed7e5d581d246b86413dfc29d63c6d018310feb93cd98fc0 AS build
+FROM --platform=$BUILDPLATFORM docker.io/library/golang:1.27.4-bookworm@sha256:4fa7c968ba93f1635670522dbb01a2c78150443e1385746924566079f36570ea AS build
 
 ARG TARGETOS
 ARG TARGETARCH
