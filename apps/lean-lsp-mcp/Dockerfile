@@ -2,7 +2,7 @@
 
 ARG UV_VERSION=0.13.6
 FROM ghcr.io/astral-sh/uv:${UV_VERSION} AS uv
-FROM python:3.12.16-slim
+FROM python:3.15.2-slim@sha256:65a65fc7b30b06cb6df4930fd4650697cb23f4c2698ab81fc87e4b031bc36928
 
 ARG PIP_VERSION=26.2.2
 # Update the URL and SHA256 together when changing PIP_VERSION.
