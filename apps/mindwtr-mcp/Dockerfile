@@ -27,7 +27,7 @@ RUN --network=none set -eu; \
     node --input-type=module -e 'await import("/tmp/mindwtr/dist/index.js")'
 
 # Stage 2: Minimal distroless runtime.
-FROM gcr.io/distroless/nodejs24-debian13:nonroot@sha256:9eeb7f5887d0e239e78264b06f7f11d2e14be534050481803a9e4728fcdd278e
+FROM gcr.io/distroless/nodejs24-debian13:nonroot@sha256:6abfcb367ebc291572c774c1592a986be2ab26a2486f73093401327495a5962a
 
 ARG VERSION
 WORKDIR /app
