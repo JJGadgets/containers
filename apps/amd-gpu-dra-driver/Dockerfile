@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.7
+# syntax=docker/dockerfile:1.29@sha256:572cebbc2b15e6f84c077742952674889cb63cd5e9b80abdffcbe587b6f19183
 
 # AMD Kubernetes DRA driver v1.0.1 + upstream mixed-vendor fix (PR #117).
 # Upstream release: https://github.com/ROCm/k8s-gpu-dra-driver/releases/tag/v1.0.1
