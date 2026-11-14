@@ -1,6 +1,6 @@
 # TODO: this is upstream Dockerfile copied as-is. todos are to harden, add multi stage uv to slim down, and use distroless
 
-ARG UV_VERSION=0.13.6
+ARG UV_VERSION=0.13.8@sha256:5cc1805e2426484abca4ad46ea783bab281fdb225fd82d8ce6d66a81254bac85
 FROM ghcr.io/astral-sh/uv:${UV_VERSION} AS uv
 FROM python:3.12.16-slim
 
