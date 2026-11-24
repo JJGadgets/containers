@@ -4,7 +4,7 @@
 ARG VERSION
 
 # Stage 1: Fetch and verify the published bundle.
-FROM docker.io/library/node:24.22.1-trixie-slim@sha256:43b9ba1142b8dcf33fa8f922ca1be85714adc444e0586c7cf7726daaeabc1bea AS package
+FROM docker.io/library/node:24.22.3-trixie-slim@sha256:4d00acb4bcc42c454c4eb801526f7ad7f772ea3bd4fd168c5cc2e384abcbb9d4 AS package
 
 ARG VERSION
 USER 1000:1000
