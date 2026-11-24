@@ -1,4 +1,4 @@
-FROM ghcr.io/nicolaka/netshoot:v0.12@sha256:b569665f0c32391b93f4de344f07bf6353ddff9d8c801ac3318d996db848a64c AS upstream
+FROM ghcr.io/nicolaka/netshoot:v0.17@sha256:7c6d613e96cbd29bc74f2d1d35035eeb2ec5e7b1cfbbc3277bd697bc3db7b40a AS upstream
 ARG VERSION
 USER 1000:1000
 WORKDIR /app
